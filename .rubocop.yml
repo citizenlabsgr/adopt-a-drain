@@ -1,0 +1,75 @@
+Rails:
+  Enabled: true
+
+AllCops:
+  TargetRailsVersion: 4.0
+  Exclude:
+    - 'bin/*'
+    - 'db/schema.rb'
+    - 'db/seeds.rb'
+    - 'vendor/bundle/**/*'
+
+Layout/DotPosition:
+  EnforcedStyle: trailing
+
+Layout/SpaceInsideHashLiteralBraces:
+  EnforcedStyle: no_space
+
+Layout/AccessModifierIndentation:
+  EnforcedStyle: outdent
+
+Metrics/AbcSize:
+  Exclude:
+    - 'app/controllers/passwords_controller.rb'
+    - 'app/controllers/sessions_controller.rb'
+    - 'app/controllers/users_controller.rb'
+    - 'lib/thing_importer.rb'
+    - 'lib/adoption_mover.rb'
+
+Metrics/BlockLength:
+  Exclude:
+    - 'config/initializers/*'
+    - 'lib/adoption_mover.rb' # removing heredocs would decrease readibility
+  ExcludedMethods: ['test']
+
+Metrics/BlockNesting:
+  Max: 2
+
+Metrics/LineLength:
+  AllowURI: true
+  Enabled: false
+
+Metrics/MethodLength:
+  CountComments: false
+  Max: 10
+  Exclude:
+    - 'db/migrate/*.rb'
+    - 'lib/thing_importer.rb' # removing heredocs would decrease readibility
+    - 'lib/adoption_mover.rb' # removing heredocs would decrease readibility
+
+Metrics/ParameterLists:
+  Max: 4
+  CountKeywordArgs: true
+
+Style/CollectionMethods:
+  PreferredMethods:
+    map:      'collect'
+    reduce:   'inject'
+    find:     'detect'
+    find_all: 'select'
+
+Style/Documentation:
+  Enabled: false
+
+Style/DoubleNegation:
+  Enabled: false
+
+Style/TrailingCommaInArguments:
+  EnforcedStyleForMultiline: 'comma'
+
+Style/TrailingCommaInLiteral:
+  EnforcedStyleForMultiline: 'comma'
+
+Style/WordArray:
+  Exclude:
+    - 'app/helpers/application_helper.rb'

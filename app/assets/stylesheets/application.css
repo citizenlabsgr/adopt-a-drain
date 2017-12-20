@@ -1,0 +1,265 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require bootstrap
+ *= require_self
+ *= require screen
+ */
+
+body, html {
+  height: 100%;
+  width: 100%;
+}
+
+div#logos {
+  margin-top: 15px;
+  padding-top: 25px;
+  border-top: thin dotted #b4b4b4;
+}
+
+div#logos img {
+  width: 100%;
+}
+
+.user-things{
+  max-height: 300px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/*div#logos img.dpw, div#logos img.puc{
+  width: auto;
+  height: 112px;
+}*/
+
+div#logos .row div{
+  text-align: center;
+}
+
+input[type="text"], input[type="email"], input[type="password"], input[type="search"]
+{
+  font-size:16px;
+}
+
+html h1,
+html h2,
+html h3,
+html h4,
+html h5,
+html h6,
+html .h1,
+html .h2,
+html .h3,
+html .h4,
+html .h5,
+html .h6 {
+  font-weight: 600;
+}
+
+h2, .h2 {
+  font-size: 1.20em;
+}
+
+h3, .h3 {
+  font-size: 1.05em;
+}
+
+h5.my-things {
+  font-weight: bold;
+}
+
+.navbar {
+  margin-bottom: 0;
+  text-align: center;
+}
+
+.navbar img {
+  max-width: 130px;
+  margin: 5px;
+}
+
+.sidebar .navbar {
+  background-color: #8DC63F;
+}
+
+.sidebar {
+	height: 90px;
+	overflow: hidden;
+  background-color: #fff;
+  z-index: 2;
+}
+
+.sidebar p.tos {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.sidebar p {
+  padding: 0;
+}
+
+.signed-in .sidebar {
+  height: 210px;
+  position: relative;
+}
+
+.signed-in .sidebar-full, .sidebar-full {
+  height: auto;
+  z-index: 2;
+  position: relative;
+}
+
+.search-form .form-group {
+  margin-bottom: 0;
+}
+
+#adoption_form {
+  text-align: center;
+}
+
+.click-to-learn {
+	text-align: center;
+}
+
+.map-container {
+  position: absolute;
+  top:90px;
+  bottom:0;
+  width: 100%;
+  z-index: 0;
+}
+
+.navbar-default {
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.navbar-toggle {
+  margin-top: 30px;
+  margin-right: 15px;
+}
+
+.sidebar-content {
+  margin: 15px;
+}
+
+.signed-in  .map-container {
+  top: 210px;
+}
+
+.btn {
+  white-space: normal !important; /* override bootstrap to wrap button text */
+  word-wrap: break-word;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #396B80;
+  border-color: #2e6da4;
+}
+
+.btn-primary:hover {
+  color: #fff;
+  background-color: #005596;
+  border-color: #204d74;
+}
+
+.btn-danger {
+  color: #fff;
+  background-color: #BF2620;
+  border-color: #d43f3a;
+}
+
+.btn-danger:hover {
+  color: #fff;
+  background-color: #EE2A24;
+  border-color: #d43f3a;
+}
+
+.btn-default {
+  color: #333;
+  background-color: #FAF0DC;
+  border-color: #ccc;
+}
+
+.break {
+  border-top: thin dotted #b4b4b4;
+  margin: 20px 0;
+}
+
+#legend {
+  background: white;
+  padding: 15px 0 15px 15px;
+  margin-bottom: 20px;
+  border: thin solid #bdbdbd;
+  right: 50px;
+}
+
+#legend div {
+  display: inline-block;
+  margin-right: 15px;
+}
+
+#legend .title {
+  display: block;
+  font-size: 1.2em;
+  font-weight: 700;
+  border-bottom: thin dotted #bdbdbd;
+  margin-bottom: 5px;
+}
+
+#legend .show-hide {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+a.guidelines {
+  text-decoration: none;
+}
+
+.user-things dd {
+  margin-left: 20px;
+}
+
+@media (min-width: 768px) {
+  .sidebar, .signed-in .sidebar {
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 25%;
+    z-index: 2;
+    overflow: scroll;
+    overflow-x: hidden;
+  }
+
+  .signed-in .map-container, .map-container {
+    width: 75%;
+    top: 0;
+    right: 0;
+  }
+
+  .navbar img {
+    max-width: 60%;
+    margin: 5px;
+  }
+
+  .sidebar button.navbar-toggle {
+    display: none;
+  }
+
+  #legend {
+    right: auto;
+    min-width: 594px;
+  }
+}

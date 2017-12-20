@@ -1,0 +1,192 @@
+h1, h2 {
+  text-align: center;
+  margin: 20px 0 10px;
+}
+
+h2 {
+  font-size: 22px;
+  line-height: 30px;
+  margin: 10px 0;
+}
+
+form {
+  margin-bottom: 0;
+}
+
+label {
+  text-align: left;
+}
+
+input {
+  width: 200px;
+}
+
+.sidebar input, .sidebar select, .sidebar option, .sidebar button, .sidebar form.search-form input, .sidebar form.search-form select, .sidebar form.search-form option, .sidebar a.btn {
+  display: block;
+  margin-bottom: 10px;
+}
+
+input[type="radio"], input[type="checkbox"] {
+  display: inline;
+  width: auto;
+  margin-right: 10px;
+}
+
+input#user_new {
+  margin-bottom: 0;
+}
+
+input#user_existing {
+  margin-bottom: 10px;
+}
+
+form select, button.btn, input[type="submit"].btn {
+}
+
+.btn-primary {
+  color: #ffffff;
+  background-color: #8871B3;
+  border-color: #8871B3;
+}
+
+.btn-secondary {
+  color: #fff;
+  background-color: #396B80;
+  border-color: #2e6da4;
+}
+
+.btn-secondary:hover {
+  color: #fff;
+  background-color: #005596;
+}
+
+
+form input.search-query {
+  -moz-border-radius: 14px;
+  -webkit-border-radius: 14px;
+  border-radius: 14px;
+  margin-bottom: 0;
+  padding-left: 14px;
+  padding-right: 14px;
+}
+
+.table {
+  display: table;
+  height: 100%;
+  width: 100%;
+}
+
+.table-row {
+  display: table-row;
+}
+
+.table-cell {
+  display: table-cell;
+  height: 100%;
+  vertical-align: top;
+}
+
+.alert-message.block-message {
+  padding: 8px 12px 8px;
+  margin-bottom: 10px;
+}
+
+.sidebar .alert-message.block-message {
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  text-align: left;
+  padding-left: 10px;
+}
+
+.sidebar {
+}
+
+.sidebar .control-group {
+  margin-left: 20px;
+}
+
+.sidebar .form-actions {
+}
+
+.sidebar p#tagline {
+  color: #ffffff;
+  background-color: #8871B3;
+  padding: 10px 20px;
+  text-align: center;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+
+.sidebar #logos {
+  height: 100px;
+}
+
+.sidebar #logos #col1 {
+  float: left;
+  margin-left: 20px;
+  width: 100px;
+}
+
+.sidebar #logos #col1 img {
+  float: left;
+  margin: 5px 0;
+}
+
+.sidebar #logos #col2 {
+  float: left;
+  margin-left: 10px;
+  width: 100px;
+}
+
+.sidebar #mayor {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 8px;
+  padding: 0;
+  margin: -5px 0 0 0;
+}
+
+.sidebar #mayor a, .sidebar #mayor a:active, .sidebar #mayor a:hover, .sidebar #mayor a:visited {
+  color: #000;
+  text-decoration: none;
+}
+
+.sidebar #feedback {
+  margin-top: 5px;
+}
+
+.map-container {
+  padding: 0;
+}
+
+#map {
+  height: 100%;
+  width: 100%;
+}
+
+#tos {
+  text-align: left;
+}
+
+#tos p {
+  padding: 0;
+  margin-bottom: 10px;
+}
+
+.upcase {
+  text-transform: uppercase;
+}
+
+.alpha {
+  list-style-type: lower-alpha;
+}
+
+.roman {
+  list-style-type: lower-roman;
+}
+
+img.lock {
+  height: 9px;
+  width: 7px;
+  opacity: 0.8;
+  filter: alpha(opacity=80); /* For IE8 and earlier */
+}
