@@ -1,3 +1,4 @@
+[![Waffle.io - Columns and their card count](https://badge.waffle.io/citizenlabsgr/adopt-a-drain.png?columns=all)](https://waffle.io/citizenlabsgr/adopt-a-drain?utm_source=badge)
 # Adopt-a-Drain
 
 [![Join the chat at https://gitter.im/sfbrigade/adopt-a-drain](https://badges.gitter.im/sfbrigade/adopt-a-drain.svg)](https://gitter.im/sfbrigade/adopt-a-drain?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
