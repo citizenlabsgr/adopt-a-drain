@@ -1,5 +1,8 @@
+## Prerequisites
+This application requires [Postgres](http://www.postgresql.org/) to be installed.
+We also recommend using a ruby version manager such as [rbenv](https://github.com/rbenv/rbenv).
+
 ## Installation
-This application requires [Postgres](http://www.postgresql.org/) to be installed
 
     git clone git://github.com/sfbrigade/adopt-a-drain.git
     cd adopt-a-drain
@@ -10,10 +13,12 @@ This application requires [Postgres](http://www.postgresql.org/) to be installed
 
 See the [wiki](https://github.com/sfbrigade/adopt-a-drain/wiki/Windows-Development-Environment) for a guide on how to install this application on Windows.
 
+At this point you should be good to start jamming on issues [here](https://github.com/citizenlabsgr/adopt-a-drain/issues).
+
 ## Docker
 
 To setup a local development environment with
-[Docker](https://docs.docker.com/engine/installation/).   
+[Docker](https://docs.docker.com/engine/installation/).
 
 ```
 # Override database settings as the docker host:
