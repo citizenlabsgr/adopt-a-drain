@@ -25,6 +25,7 @@ module AdoptAThing
     config.active_record.raise_in_transactional_callbacks = true
 
     # https://devcenter.heroku.com/articles/rails-4-asset-pipeline#serve-assets
-    config.serve_static_assets = true
+    # config.serve_static_assets = true
+    config.serve_static_files = true
   end
 end
