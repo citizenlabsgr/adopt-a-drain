@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-# ruby '2.5.1'
+# ruby '2.3.3'
 
 gem 'airbrake', '~> 7.1'
 gem 'devise', '~> 3.0'
