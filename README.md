@@ -1,4 +1,4 @@
-[![Waffle.io - Columns and their card count](https://badge.waffle.io/citizenlabsgr/adopt-a-drain.png?columns=all)](https://waffle.io/citizenlabsgr/adopt-a-drain?utm_source=badge)
+[![Build Status](https://travis-ci.org/citizenlabsgr/adopt-a-drain.svg?branch=master)](https://travis-ci.org/citizenlabsgr/adopt-a-drain) [![Waffle.io - Columns and their card count](https://badge.waffle.io/citizenlabsgr/adopt-a-drain.png?columns=all)](https://waffle.io/citizenlabsgr/adopt-a-drain?utm_source=badge)
 
 # Adopt-a-Drain
 
