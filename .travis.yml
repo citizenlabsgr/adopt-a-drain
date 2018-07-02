@@ -12,6 +12,6 @@ bundler_args: "--without assets:development:production"
 before_script: bundle exec rake db:create db:schema:load
 
 script:
-- bundle audit check --update
+- bundle exec bundle audit check --update
 - bundle exec rake test
 # - bundle exec rubocop # TODO: make codebase rubocop compliant
