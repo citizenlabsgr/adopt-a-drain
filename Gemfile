@@ -1,17 +1,18 @@
 source 'https://rubygems.org'
-# ruby '2.3.3'
+ruby '2.3.3'
 
 gem 'airbrake', '~> 7.1'
+gem 'bundler-audit', '~> 0.6'
 gem 'devise', '~> 3.0'
 gem 'geokit', '~> 1.0'
 gem 'haml', '~> 5.0'
 gem 'http_accept_language', '~> 2.0'
 gem 'local_time', '~> 2.0'
-gem 'obscenity', '~> 1.0', '>= 1.0.2'
-gem 'pg'
+gem 'obscenity', '>= 1.0.2'
+gem 'pg', '~> 0.21'
 gem 'rails', '~> 4.2.10'
 gem 'rails_admin', '~> 1.0'
-gem 'validates_formatting_of', '~> 0.9.0'
+gem 'validates_formatting_of', '~> 0.9'
 
 gem 'paranoia', '~> 2.4'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw]
