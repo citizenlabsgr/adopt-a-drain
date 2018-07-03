@@ -25,6 +25,9 @@ To setup a local development environment with
 echo DB_HOST=db > .env
 echo DB_USER=postgres >> .env
 
+# Enable google maps with your developer google map api key 
+echo GOOGLE_MAPS_JAVASCRIPT_API_KEY=<get-google-map-api-key> >> .env
+
 # Setup your docker based postgres database:
 docker-compose run --rm web bundle exec rake db:setup
 
@@ -110,7 +113,8 @@ An example ID is `UA-12345678-9`, and an example domain is `adoptadrain.org`.
 [pr]: http://help.github.com/send-pull-requests/
 
 ## Supported Ruby Version
-This library aims to support and is [tested against][travis] Ruby version 2.2.2.
+This library aims to support and is [tested against][travis] Ruby version 2.3.3
+and Postgres 9.6.
 
 If something doesn't work on this version, it should be considered a bug.
 
