@@ -1,6 +1,9 @@
 ## Prerequisites
-This application requires [Postgres](http://www.postgresql.org/) to be installed.
-We also recommend using a ruby version manager such as [rbenv](https://github.com/rbenv/rbenv).
+* This application requires [Postgres](http://www.postgresql.org/) to be installed.
+* We also recommend using a ruby version manager such as [rbenv](https://github.com/rbenv/rbenv).
+* You will need a data.world account to get an API token
+*
+
 
 ## Installation
 
@@ -25,8 +28,17 @@ To setup a local development environment with
 echo DB_HOST=db > .env
 echo DB_USER=postgres >> .env
 
-# Enable google maps with your developer google map api key 
+# Enable google maps with your dev or prod google map api key
 echo GOOGLE_MAPS_JAVASCRIPT_API_KEY=<get-google-map-api-key> >> .env
+
+# Provide an owner id for the drain data.
+echo DW_USER=citizenlabs
+
+# Enable data.world data with your "read/write" api token
+echo DW_AUTH_TOKEN=<get-data.world-api-token> >> .env
+
+# URL for drain data
+echo OPEN_SOURCE=https://api.data.world/v0/sql/citizenlabs/grb-storm-drains?includeTableSchema=False >> .env
 
 # Setup your docker based postgres database:
 docker-compose run --rm web bundle exec rake db:setup
