@@ -2,21 +2,18 @@ require 'open-uri'
 require 'uri'
 require 'net/http'
 require 'json'
-# class for importing things from CSV datasource
+# class for importing things from JSON data.world datasource
 # is currently very specific to drains from Grand River Basin
 #
 # Dataset:
-# https://data.sfgov.org/City-Infrastructure/Stormwater-inlets-drains-and-catch-basins/jtgq-b7c5
+# https://api.data.world/v0/sql/citizenlabs/grb-storm-drains
 # Data Flow (TABLES):
-#   csv -> temp_thing_import -> things
+#   json -> temp_thing_import -> things
 # App Flow
 # -> ThingImporter
 class ThingImporter
   class << self
     def load(source_url)
-      # puts 'Downloading Things '
-      # puts 'DW_USER: ' + ENV['DW_USER']
-      # puts 'OPEN_SOURCE: ' + ENV['OPEN_SOURCE']
 
       Rails.logger.info('Downloading Things... ... ...')
 
@@ -35,6 +32,7 @@ class ThingImporter
     end
 
     def integer?(string)
+      # check value for integer type
       return true if string =~ /\A\d+\Z/
       false
     end
@@ -52,13 +50,17 @@ class ThingImporter
     end
 
     def invalid_thing(thing)
-      # puts 'invalid_thing 1'
-      rc = false
-      false unless ['Storm Water Inlet Drain', 'Catch Basin Drain'].include?(thing["type"])
-      false unless integer?(thing["city_id"])
-
-      # puts 'invalid_thing out'
-      return true
+      # bare minimum validation of imported data
+      rc = true
+      # make sure type value is a "Storm Water Inlet Drain" or "Catch Basin Drain"
+      if not ['Storm Water Inlet Drain', 'Catch Basin Drain'].include?(thing["type"])
+        rc = false
+      end
+      # check value city_id is integer
+      if not integer?(thing["city_id"])
+        rc = false
+      end
+      return rc
     end
 
     def import_temp_things(source_url)
@@ -87,7 +89,6 @@ class ThingImporter
       http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
       request = Net::HTTP::Post.new(url)
-      # request["content-type"] = 'application/x-www-form-urlencoded'
       request["content-type"] = 'application/json'
       request["authorization"] = 'Bearer ' + ENV['DW_AUTH_TOKEN']
 
@@ -95,28 +96,23 @@ class ThingImporter
 
       request.body = "{\"query\":\"select * from grb_drains\",\"includeTableSchema\":false}"
       response = http.request(request)
-      # puts 'import 7'
-      # puts response.code
-      # puts response.msg
-      # puts 'import 8'
 
       json_string = response.read_body
 
       # patch up to work around error
       json_string = '{ "data": ' + json_string + '}'
       # end data world code
+
       # process json data.world data
       JSON.parse(json_string)['data']
       .map { |t| normalize_thing(t) }
       .select { |t| invalid_thing(t) }
       .each do |drain|
-
         conn.raw_connection.exec_prepared(
            insert_statement_id,
            [drain[:name], drain[:lat], drain[:lng], drain[:city_id], drain[:system_use_code]],
         )
       end
-
 
       conn.execute('CREATE INDEX "temp_thing_import_city_id" ON temp_thing_import(city_id)')
     end
@@ -144,7 +140,7 @@ class ThingImporter
         RIGHT JOIN temp_thing_import ON temp_thing_import.city_id = things.city_id
         WHERE things.id IS NULL
       SQL
-      # puts 'upsert_things 2'
+
       ActiveRecord::Base.connection.execute(<<-SQL.strip_heredoc)
         INSERT INTO things(name, lat, lng, city_id, system_use_code)
         SELECT name, lat, lng, city_id, system_use_code FROM temp_thing_import
@@ -159,8 +155,3 @@ class ThingImporter
     end
   end
 end
-# ON CONFLICT(city_id) DO UPDATE SET
-#  lat = EXCLUDED.lat,
-#  lng = EXCLUDED.lng,
-#  name = EXCLUDED.name,
-#  deleted_at = NULL
