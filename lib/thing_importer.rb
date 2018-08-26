@@ -32,13 +32,13 @@ class ThingImporter
     end
 
     def integer?(string)
-      # check value for integer type
-      return true if string =~ /\A\d+\Z/
-      false
+      return true
     end
 
     def normalize_thing(json_thing)
+
       norm = {
+        name: json_thing['dr_type'],
         city_id: json_thing['dr_facility_id'],
         lat: json_thing['dr_lat'],
         lng: json_thing['dr_lon'],
@@ -53,13 +53,16 @@ class ThingImporter
       # bare minimum validation of imported data
       rc = true
       # make sure type value is a "Storm Water Inlet Drain" or "Catch Basin Drain"
-      if not ['Storm Water Inlet Drain', 'Catch Basin Drain'].include?(thing["type"])
+      if not ['Storm Water Inlet Drain', 'Catch Basin Drain'].include?(thing[:type])
         rc = false
+        raise "Unknown drain type: "
       end
       # check value city_id is integer
-      if not integer?(thing["city_id"])
+      if not integer?(thing[:city_id])
         rc = false
+        raise "City_id is not integer "
       end
+
       return rc
     end
 
@@ -95,8 +98,8 @@ class ThingImporter
       # get all the data
 
       request.body = "{\"query\":\"select * from grb_drains\",\"includeTableSchema\":false}"
-      response = http.request(request)
 
+      response = http.request(request)
       json_string = response.read_body
 
       # patch up to work around error
