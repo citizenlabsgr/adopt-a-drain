@@ -93,7 +93,7 @@ class ThingImporter
 
       request = Net::HTTP::Post.new(url)
       request["content-type"] = 'application/json'
-      request["authorization"] = 'Bearer ' + ENV['DW_AUTH_TOKEN']
+      request["authorization"] = "Bearer #{ENV['DW_AUTH_TOKEN']}"
 
       # get all the data
 
