@@ -38,7 +38,7 @@ echo DW_USER=citizenlabs
 echo DW_AUTH_TOKEN=<get-data.world-api-token> >> .env
 
 # URL for drain data
-echo OPEN_SOURCE=https://api.data.world/v0/sql/citizenlabs/grb-storm-drains?includeTableSchema=False >> .env
+echo OPEN_SOURCE=https://api.data.world/v0/sql/citizenlabs/grb-storm-drains >> .env
 
 # Setup your docker based postgres database:
 docker-compose run --rm web bundle exec rake db:setup
