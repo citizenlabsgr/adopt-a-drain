@@ -1,52 +1,75 @@
 require 'open-uri'
-
-# class for importing things from CSV datasource
-# is currently very specific to drains from DataSF
+require 'uri'
+require 'net/http'
+require 'json'
+# class for importing things from JSON data.world datasource
+# is currently very specific to drains from Grand River Basin
 #
 # Dataset:
-# https://data.sfgov.org/City-Infrastructure/Stormwater-inlets-drains-and-catch-basins/jtgq-b7c5
+# https://api.data.world/v0/sql/citizenlabs/grb-storm-drains
+# Data Flow (TABLES):
+#   json -> temp_thing_import -> things
+# App Flow
+# -> ThingImporter
 class ThingImporter
   class << self
     def load(source_url)
+
       Rails.logger.info('Downloading Things... ... ...')
 
       ActiveRecord::Base.transaction do
+
         import_temp_things(source_url)
 
         deleted_things_with_adoptee, deleted_things_no_adoptee = delete_non_existing_things
+
         created_things = upsert_things
 
         ThingMailer.thing_update_report(deleted_things_with_adoptee, deleted_things_no_adoptee, created_things).deliver_now
+
       end
+
     end
 
     def integer?(string)
-      return true if string =~ /\A\d+\Z/
-
-      false
+      return true
     end
 
-    def normalize_thing(csv_thing)
-      (lat, lng) = csv_thing['Location'].delete('()').split(',').map(&:strip)
-      {
-        city_id: csv_thing['PUC_Maximo_Asset_ID'].gsub!('N-', ''),
-        lat: lat,
-        lng: lng,
-        type: csv_thing['Drain_Type'],
-        system_use_code: csv_thing['System_Use_Code'],
+    def normalize_thing(json_thing)
+
+      norm = {
+        name: json_thing['dr_type'],
+        city_id: json_thing['dr_facility_id'],
+        lat: json_thing['dr_lat'],
+        lng: json_thing['dr_lon'],
+        type: json_thing['dr_type'],
+        system_use_code: json_thing['dr_subwatershed'],
       }
+
+      return norm
     end
 
     def invalid_thing(thing)
-      false unless ['Storm Water Inlet Drain', 'Catch Basin Drain'].include?(thing[:type])
-      false unless integer?(thing[:city_id])
-      true
+      # bare minimum validation of imported data
+      rc = true
+      # make sure type value is a "Storm Water Inlet Drain" or "Catch Basin Drain"
+      if not ['Storm Water Inlet Drain', 'Catch Basin Drain'].include?(thing[:type])
+        rc = false
+        raise "Unknown drain type: "
+      end
+      # check value city_id is integer
+      if not integer?(thing[:city_id])
+        rc = false
+        raise "City_id is not integer "
+      end
+
+      return rc
     end
 
-    # load all of the items into a temporary table, temp_thing_import
     def import_temp_things(source_url)
-      insert_statement_id = SecureRandom.uuid
 
+      insert_statement_id = SecureRandom.uuid
+      # connect and create temp table
       conn = ActiveRecord::Base.connection
       conn.execute(<<-SQL.strip_heredoc)
         CREATE TEMPORARY TABLE "temp_thing_import" (
@@ -60,14 +83,37 @@ class ThingImporter
       SQL
       conn.raw_connection.prepare(insert_statement_id, 'INSERT INTO temp_thing_import (name, lat, lng, city_id, system_use_code) VALUES($1, $2, $3, $4, $5)')
 
-      csv_string = open(source_url).read
-      CSV.parse(csv_string, headers: true).
-        map { |t| normalize_thing(t) }.
-        select { |t| invalid_thing(t) }.
-        each do |thing|
+      # data.world code
+
+      url = URI(source_url)
+
+      http = Net::HTTP.new(url.host, url.port)
+      http.use_ssl = true
+      http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+      request = Net::HTTP::Post.new(url)
+      request["content-type"] = 'application/json'
+      request["authorization"] = "Bearer #{ENV['DW_AUTH_TOKEN']}"
+
+      # get all the data
+
+      request.body = "{\"query\":\"select * from grb_drains\",\"includeTableSchema\":false}"
+
+      response = http.request(request)
+      json_string = response.read_body
+
+      # patch up to work around error
+      json_string = '{ "data": ' + json_string + '}'
+      # end data world code
+
+      # process json data.world data
+      JSON.parse(json_string)['data']
+      .map { |t| normalize_thing(t) }
+      .select { |t| invalid_thing(t) }
+      .each do |drain|
         conn.raw_connection.exec_prepared(
-          insert_statement_id,
-          [thing[:type], thing[:lat], thing[:lng], thing[:city_id], thing[:system_use_code]],
+           insert_statement_id,
+           [drain[:name], drain[:lat], drain[:lng], drain[:city_id], drain[:system_use_code]],
         )
       end
 
@@ -90,6 +136,7 @@ class ThingImporter
     def upsert_things
       # postgresql's RETURNING returns both updated and inserted records so we
       # query for the items to be inserted first
+
       created_things = ActiveRecord::Base.connection.execute(<<-SQL.strip_heredoc)
         SELECT temp_thing_import.city_id
         FROM things
@@ -107,7 +154,7 @@ class ThingImporter
           deleted_at = NULL
       SQL
 
-      created_things
+      return created_things
     end
   end
 end
