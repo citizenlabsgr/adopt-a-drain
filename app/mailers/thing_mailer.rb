@@ -34,14 +34,14 @@ class ThingMailer < ApplicationMailer
     @created_thing_ids = created_things.map { |t| t['city_id'] }
 
     subject = t('subjects.update_report',
-                title: t('titles.main', thing: t('defaults.thing').titleize),
+                title: t('titles.main', thing: t('defaults.thing').titleize, context:t('context.place')),
                 deleted_adopted_count: deleted_things_with_adoptee.count,
                 created_count: created_things.count,
                 deleted_unadopted_count: deleted_things_no_adoptee.count,
                 things: t('defaults.things'))
 
     mail(to: User.where(admin: true).pluck(:email), subject: subject)
-    
+
   end
   # rubocop:enable Metrics/AbcSize
 end

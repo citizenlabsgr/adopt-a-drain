@@ -139,7 +139,7 @@ class ThingImporterTest < ActiveSupport::TestCase
 
     email = ActionMailer::Base.deliveries.last
     assert_equal email.to, [admin.email]
-    assert_equal email.subject, 'Adopt-a-Drain San Francisco import (1 adopted drains removed, 1 drains added, 7 unadopted drains removed)'
+    assert_equal email.subject, 'Adopt-a-Drain Grand River Basin import (1 adopted drains removed, 1 drains added, 7 unadopted drains removed)'
     thing11.reload
     thing10.reload
 

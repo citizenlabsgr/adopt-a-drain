@@ -35,11 +35,12 @@ div#logos img {
   overflow-y: auto;
   overflow-x: hidden;
 }
-
-/*div#logos img.dpw, div#logos img.puc{
+/*
+div#logos img.dpw, div#logos img.puc{
   width: auto;
   height: 112px;
-}*/
+}
+*/
 
 div#logos .row div{
   text-align: center;
