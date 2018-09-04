@@ -50,7 +50,7 @@ en:
     password: "You need to sign in or sign up before continuing."
     not_found: "Could not find %{thing}."
   labels:
-    address: "Address, Neighborhood"
+    address: "Street, City"
     address_1: "Address Line 1"
     address_2: "Address Line 2"
     city: "City"
