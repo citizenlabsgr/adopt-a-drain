@@ -1,9 +1,13 @@
 require 'rake'
 
-# require 'rest-client'
+begin
+  require 'dotenv/load'
+rescue LoadError
+  puts 'dotenv is not available in this environment'
+end
+
 namespace :data do
   task load_things: :environment do
-    require 'dotenv/load'
     require 'thing_importer'
 
     # ThingImporter.load('https://data.sfgov.org/api/views/jtgq-b7c5/rows.csv?accessType=DOWNLOAD')

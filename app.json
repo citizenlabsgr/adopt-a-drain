@@ -1,8 +1,8 @@
 {
   "name": "adopt-a-drain",
-  "description": "Adopt-a-Drain GRB Review App",
+  "description": "Adopt-a-Drain GRB",
   "scripts": {
-    "postdeploy": "bundle exec rake db:schema:load db:seed"
+    "postdeploy": "bundle exec rake db:schema:load data:load_things"
   },
   "env": {
     "GOOGLE_MAPS_JAVASCRIPT_API_KEY": {
@@ -25,9 +25,14 @@
     },
     "SECRET_KEY_BASE": {
       "generator": "secret"
+    },
+    "DW_AUTH_TOKEN": {
+      "required": true
+    },
+    "DW_USER": {
+      "required": true
     }
   },
-  "formation": {},
   "addons": [
     "airbrake",
     "heroku-postgresql",
