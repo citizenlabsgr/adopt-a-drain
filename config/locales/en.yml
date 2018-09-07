@@ -45,7 +45,7 @@ en:
     voice_number: "415-555-1212"
     zip: "94015-2013"
   email:
-    info_address: "info@sfwater.org"
+    info_address: "hello@citizenlabs.org"
   errors:
     password: "You need to sign in or sign up before continuing."
     not_found: "Could not find %{thing}."
