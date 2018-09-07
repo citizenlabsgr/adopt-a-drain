@@ -31,6 +31,9 @@
     },
     "DW_USER": {
       "required": true
+    },
+    "OPEN_SOURCE": {
+      "required": true
     }
   },
   "addons": [
