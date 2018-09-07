@@ -1,10 +1,5 @@
 require 'rake'
-
-begin
-  require 'dotenv/load'
-rescue LoadError
-  puts 'dotenv is not available in this environment'
-end
+require 'dotenv/load'
 
 namespace :data do
   task load_things: :environment do
