@@ -98,7 +98,7 @@ en:
     stolen: "%{thing} stolen!"
   titles:
     adopt: "Adopt this %{thing}"
-    adopted: "%{thing_name} has been adopted"
+    adopted: "%{thing_name} is adopted"
     adopted_tagline: "%{count} %{things} adopted in %{context}"
     byline: "by %{name}"
     edit_profile: "Edit your Profile"
