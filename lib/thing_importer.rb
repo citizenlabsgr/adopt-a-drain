@@ -25,7 +25,7 @@ class ThingImporter
 
         created_things = upsert_things
 
-        ThingMailer.thing_update_report(deleted_things_with_adoptee, deleted_things_no_adoptee, created_things).deliver_now
+        # ThingMailer.thing_update_report(deleted_things_with_adoptee, deleted_things_no_adoptee, created_things).deliver_now
 
       end
 

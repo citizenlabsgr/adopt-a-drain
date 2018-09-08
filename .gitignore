@@ -24,8 +24,8 @@
 .env
 
 # Ignore dev convenience script
-run.sh
-test.sh
+*.sh
+00.all.log
 
 # Ignore production assets
 public/assets
