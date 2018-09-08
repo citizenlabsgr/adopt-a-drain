@@ -18,7 +18,7 @@ gem 'paranoia', '~> 2.4'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw]
 
 gem 'byebug', groups: %i[development test]
-gem 'dotenv-rails', groups: %i[development test]
+gem 'dotenv-rails'
 
 group :assets do
   gem 'sass-rails', '>= 4.0.3'
