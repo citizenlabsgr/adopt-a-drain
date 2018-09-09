@@ -21,10 +21,14 @@
 /log/*
 !/log/.keep
 /tmp
+
+# Ignore environment variables
 .env
 
 # Ignore dev convenience script
 *.sh
+
+# Ignore dev startup logs
 00.all.log
 
 # Ignore production assets
