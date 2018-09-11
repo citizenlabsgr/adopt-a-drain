@@ -14,7 +14,7 @@
     bundle exec rake db:create
     bundle exec rake db:schema:load
 
-See the [wiki](https://github.com/sfbrigade/adopt-a-drain/wiki/Windows-Development-Environment) for a guide on how to install this application on Windows.
+See the [wiki](https://github.com/citizenlabsgr/adopt-a-drain/wiki/Windows-Development-Environment) for a guide on how to install this application on Windows.
 
 At this point you should be good to start jamming on issues [here](https://github.com/citizenlabsgr/adopt-a-drain/issues).
 
