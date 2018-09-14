@@ -78,6 +78,10 @@ $(function() {
     anchor
   );
 
+  /*
+    LEGEND
+  */
+
   var legend = document.getElementById('legend');
 
   var legendItems = document.createElement('div');
@@ -85,15 +89,15 @@ $(function() {
 
   var icons = {
     available: {
-      name: 'Drains to Sewer',
-      title:  'Sewer',
+      name: 'Available Drain',
+      title:  'Surface Water (River/Stream)',
       icon: constants.toSewerMarkerImage
     },
-    availableBay: {
+    /*availableBay: {
       name: 'Drains to Ocean/Bay',
       title: 'Sewer to ocean/bay',
       icon: constants.toBayOceanMarkerImage
-    },
+    },*/
     adopted: {
       name: 'Adopted',
       title:  'Adopted by other',
@@ -117,7 +121,9 @@ $(function() {
   }
 
   legend.appendChild(legendItems);
-
+  /*
+    MAP CONTROLS
+  */
   map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(legend);
 
   $('#toggleLegend').click(function(){
@@ -134,6 +140,16 @@ $(function() {
   var thingIds = [];
   var adoptedThings = [];
   function addMarker(thingId, point, type, user_id) {
+    /*
+      Add single marker
+      thingId is a record reference
+      point is google.maps.LatLng
+      type is a state name, adopted, adoptedbyyou, tosewer, tobayocean
+      user-id is
+    */
+    /*
+      set the symbol
+    */
     if(type === 'adopted') {
       var image = adoptedMarker;
     } else if(type === 'adoptedbyyou') {
@@ -143,6 +159,10 @@ $(function() {
     } else if(type === 'tobayocean') {
       var image = toBayOceanMarker;
     }
+    /*
+      Make the map visible marker
+      include: drop shadow
+    */
     var marker = new google.maps.Marker({
       animation: google.maps.Animation.DROP,
       icon: image,
@@ -150,6 +170,10 @@ $(function() {
       position: point,
       shadow: markerShadowImage
     });
+    /*
+      Intercept clicks on symbol
+      open info window
+    */
     google.maps.event.addListener(marker, 'click', function() {
       console.log(marker);
       if(activeInfoWindow) {
@@ -180,8 +204,9 @@ $(function() {
         }
       });
     });
-    thingIds.push(thingId);
+    thingIds.push(thingId); /* ???*/
     if (type === 'adopted' || type === 'adoptedbyyou') {
+      /* ?????? */
       adoptedThings.push([user_id, marker]);
     }
   }
@@ -219,7 +244,7 @@ $(function() {
               var point = new google.maps.LatLng(thing.lat, thing.lng);
               var type = 'tosewer'
               if(thing.system_use_code == 'MS4') {
-                type = 'tobayocean';
+                type = 'tobayocean'; /*obsolete code */
               }
               if(thing.user_id) {
                 type  = 'adopted';
