@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 20170926173203) do
     t.integer  "city_id"
     t.integer  "user_id"
     t.string   "system_use_code"
+    t.string   "jurisdiction"
     t.datetime "deleted_at"
     t.string   "adopted_name"
   end
