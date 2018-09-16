@@ -93,7 +93,9 @@ $(function() {
       title:  'Surface Water (River/Stream)',
       icon: constants.toSewerMarkerImage
     },
-    /*availableBay: {
+    /*
+      drop the ocean from legend
+      availableBay: {
       name: 'Drains to Ocean/Bay',
       title: 'Sewer to ocean/bay',
       icon: constants.toBayOceanMarkerImage
@@ -121,11 +123,11 @@ $(function() {
   }
 
   legend.appendChild(legendItems);
+
+  map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(legend);
   /*
     MAP CONTROLS
   */
-  map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(legend);
-
   $('#toggleLegend').click(function(){
     $('#legend .legend-items').slideToggle(function(){
       var text = $('#legend .show-hide a').html().trim();
@@ -195,10 +197,11 @@ $(function() {
           'thing_id': thingId
         },
         success: function(data) {
+          console.log(data)
           // Prevent race condition, which could lead to multiple windows being open at the same time.
           if(infoWindow === activeInfoWindow) {
-            infoWindow.setContent(data);
-            infoWindow.open(map, marker);
+            infoWindow.setContent(data); // set content of info window
+            infoWindow.open(map, marker); // present info window to user
             isWindowOpen = true;
           }
         }
