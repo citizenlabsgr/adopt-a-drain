@@ -54,7 +54,6 @@ ActiveRecord::Schema.define(version: 20180916000001) do
     t.string   "system_use_code"
     t.datetime "deleted_at"
     t.string   "adopted_name"
-    t.string   "jurisdiction"
   end
 
   add_index "things", ["city_id"], name: "index_things_on_city_id", unique: true, using: :btree
