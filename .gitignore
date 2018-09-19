@@ -33,3 +33,6 @@
 
 # Ignore production assets
 public/assets
+
+# Ignore Process documents
+*.bmpr

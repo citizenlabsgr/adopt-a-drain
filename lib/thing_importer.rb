@@ -44,6 +44,7 @@ class ThingImporter
         lng: json_thing['dr_lon'],
         type: json_thing['dr_type'],
         system_use_code: json_thing['dr_subwatershed'],
+        jurisdiction: json_thing['dr_jurisdiction']
       }
 
       return norm
@@ -78,10 +79,11 @@ class ThingImporter
           lat numeric(16,14),
           lng numeric(17,14),
           city_id integer,
-          system_use_code varchar
+          system_use_code varchar,
+          jurisdiction varchar
         )
       SQL
-      conn.raw_connection.prepare(insert_statement_id, 'INSERT INTO temp_thing_import (name, lat, lng, city_id, system_use_code) VALUES($1, $2, $3, $4, $5)')
+      conn.raw_connection.prepare(insert_statement_id, 'INSERT INTO temp_thing_import (name, lat, lng, city_id, system_use_code, jurisdiction) VALUES($1, $2, $3, $4, $5, $6)')
 
       # data.world code
 
@@ -113,7 +115,7 @@ class ThingImporter
       .each do |drain|
         conn.raw_connection.exec_prepared(
            insert_statement_id,
-           [drain[:name], drain[:lat], drain[:lng], drain[:city_id], drain[:system_use_code]],
+           [drain[:name], drain[:lat], drain[:lng], drain[:city_id], drain[:system_use_code], drain[:jurisdiction]],
         )
       end
 
@@ -145,8 +147,8 @@ class ThingImporter
       SQL
 
       ActiveRecord::Base.connection.execute(<<-SQL.strip_heredoc)
-        INSERT INTO things(name, lat, lng, city_id, system_use_code)
-        SELECT name, lat, lng, city_id, system_use_code FROM temp_thing_import
+        INSERT INTO things(name, lat, lng, city_id, system_use_code, jurisdiction)
+        SELECT name, lat, lng, city_id, system_use_code, jurisdiction FROM temp_thing_import
         ON CONFLICT(city_id) DO UPDATE SET
           lat = EXCLUDED.lat,
           lng = EXCLUDED.lng,
