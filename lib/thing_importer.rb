@@ -86,7 +86,6 @@ class ThingImporter
       conn.raw_connection.prepare(insert_statement_id, 'INSERT INTO temp_thing_import (name, lat, lng, city_id, system_use_code, jurisdiction) VALUES($1, $2, $3, $4, $5, $6)')
 
       # data.world code
-
       url = URI(source_url)
 
       http = Net::HTTP.new(url.host, url.port)
@@ -98,7 +97,6 @@ class ThingImporter
       request["authorization"] = "Bearer #{ENV['DW_AUTH_TOKEN']}"
 
       # get all the data
-
       request.body = "{\"query\":\"select * from grb_drains\",\"includeTableSchema\":false}"
 
       response = http.request(request)
@@ -108,7 +106,7 @@ class ThingImporter
       json_string = '{ "data": ' + json_string + '}'
       # end data world code
 
-      # process json data.world data
+      # move data.world data into app db
       JSON.parse(json_string)['data']
       .map { |t| normalize_thing(t) }
       .select { |t| invalid_thing(t) }
