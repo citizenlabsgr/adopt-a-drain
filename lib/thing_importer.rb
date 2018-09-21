@@ -151,10 +151,12 @@ class ThingImporter
           lat = EXCLUDED.lat,
           lng = EXCLUDED.lng,
           name = EXCLUDED.name,
-          deleted_at = NULL
+          deleted_at = NULL,
+          jurisdiction = EXCLUDED.jurisdiction
       SQL
 
       return created_things
     end
+
   end
 end
