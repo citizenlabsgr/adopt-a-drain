@@ -2,8 +2,6 @@
 * This application requires [Postgres](http://www.postgresql.org/) to be installed.
 * We also recommend using a ruby version manager such as [rbenv](https://github.com/rbenv/rbenv).
 * You will need a data.world account to get an API token
-*
-
 
 ## Installation
 
