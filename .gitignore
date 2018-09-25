@@ -30,6 +30,7 @@
 
 # Ignore dev startup logs
 00.all.log
+01.dev.log
 
 # Ignore production assets
 public/assets
