@@ -123,7 +123,7 @@ An example ID is `UA-12345678-9`, and an example domain is `adoptadrain.org`.
 [pr]: http://help.github.com/send-pull-requests/
 
 ## Supported Ruby Version
-This library aims to support and is [tested against][travis] Ruby version 2.3.3
+This library aims to support and is [tested against][travis] Ruby version 2.4.0
 and Postgres 9.6.
 
 If something doesn't work on this version, it should be considered a bug.
