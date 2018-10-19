@@ -10,10 +10,12 @@ class PasswordsControllerTest < ActionController::TestCase
   test 'should send password reset instructions if email address is found' do
     num_deliveries = ActionMailer::Base.deliveries.size
     post :create, user: {email: @user.email}
+
     assert_equal num_deliveries + 1, ActionMailer::Base.deliveries.size
     assert_response :success
     email = ActionMailer::Base.deliveries.last
     assert_equal [@user.email], email.to
+    
     assert_equal 'Adopt-a-drain Grand River Basin reset password instructions', email.subject
   end
 
