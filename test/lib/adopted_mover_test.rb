@@ -12,7 +12,7 @@ class AdoptionMoverTest < ActiveSupport::TestCase
       thing.update!(user_id: nil, lat: '37.74093794334370', lng: '-122.42275720139800')
     end
 
-    moved_adoptions = AdoptionMover.move_close_deleted_adoptions(Time.zone.parse('1 hour ago'), 5)
+    moved_adoptions = AdoptionMover.move_close_deleted_adoptions(1.hour.ago, 5)
 
     assert_equal moved_adoptions[deleted_adoption_to_be_moved.id], unadopted_thing_to_be_moved_to.id
 
@@ -35,7 +35,7 @@ class AdoptionMoverTest < ActiveSupport::TestCase
       thing.update!(user_id: users(:dan).id, adopted_name: 'world', lat: '37.74093794334370', lng: '-122.42275720139800')
     end
 
-    assert_equal AdoptionMover.move_close_deleted_adoptions(Time.zone.parse('1 hour ago'), 5), {}
+    assert_equal AdoptionMover.move_close_deleted_adoptions(1.hour.ago, 5), {}
 
     # original adoption unchanged
     deleted_adoption_to_be_moved.reload
@@ -57,7 +57,7 @@ class AdoptionMoverTest < ActiveSupport::TestCase
       thing.update!(user_id: nil, lat: '38.74093794334370', lng: '-122.42275720139800')
     end
 
-    assert_equal AdoptionMover.move_close_deleted_adoptions(Time.zone.parse('1 hour ago'), 5), {}
+    assert_equal AdoptionMover.move_close_deleted_adoptions(1.hour.ago, 5), {}
 
     # original adoption unchanged
     deleted_adoption_to_be_moved.reload
