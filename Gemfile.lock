@@ -113,7 +113,7 @@ GEM
       kaminari-core (= 1.1.1)
     kaminari-core (1.1.1)
     local_time (2.1.0)
-    loofah (2.2.2)
+    loofah (2.2.3)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
@@ -266,6 +266,7 @@ DEPENDENCIES
   haml (~> 5.0)
   http_accept_language (~> 2.0)
   local_time (~> 2.0)
+  loofah (~> 2.2.3)
   obscenity (>= 1.0.2)
   paranoia (~> 2.4)
   pg (~> 0.21)
@@ -287,4 +288,4 @@ RUBY VERSION
    ruby 2.4.0p0
 
 BUNDLED WITH
-   1.16.4
+   1.17.1
