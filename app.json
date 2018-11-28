@@ -38,7 +38,7 @@
   },
   "addons": [
     "airbrake",
-    "heroku-postgresql",
+    "heroku-postgresql:hobby-basic",
     "sendgrid"
   ],
   "buildpacks": [
