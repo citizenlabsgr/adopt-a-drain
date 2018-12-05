@@ -1,7 +1,8 @@
 require 'test_helper'
 
 class InfoWindowControllerTest < ActionController::TestCase
-  include Devise::TestHelpers
+  include Devise::Test::ControllerHelpers
+
   setup do
     @thing = things(:thing_1)
     @user = users(:erik)

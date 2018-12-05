@@ -1,8 +1,7 @@
 require 'test_helper'
 
 class MainControllerTest < ActionController::TestCase
-  include Devise::TestHelpers
-
+  include Devise::Test::ControllerHelpers
   setup do
     request.env['devise.mapping'] = Devise.mappings[:user]
     @user = users(:erik)
