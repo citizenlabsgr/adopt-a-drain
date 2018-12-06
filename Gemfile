@@ -3,6 +3,7 @@ ruby '2.5.3'
 
 gem 'airbrake', '~> 7.1'
 gem 'bundler-audit', '~> 0.6'
+gem 'concurrent-ruby', '>= 1.1.3'
 # gem 'devise', '~> 3.0'
 # gem 'devise', '~> 4.4.0'
 gem 'devise', '~> 4.4'
@@ -13,7 +14,7 @@ gem 'local_time', '~> 2.0'
 gem 'loofah', '~> 2.2.3'
 gem 'obscenity', '>= 1.0.2'
 gem 'pg', '~> 0.21'
-gem 'rails', '~> 4.2.10'
+gem 'rails', '~> 4.2.11'
 gem 'rack', '~> 1.6.11'
 gem 'rails_admin', '~> 1.0'
 gem 'validates_formatting_of', '~> 0.9'
@@ -25,6 +26,7 @@ gem 'byebug', groups: %i[development test]
 gem 'dotenv-rails'
 gem 'execjs'
 gem 'therubyracer'
+
 
 group :assets do
   gem 'sass-rails', '>= 4.0.3'

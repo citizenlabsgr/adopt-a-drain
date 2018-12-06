@@ -6,15 +6,10 @@ RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs
 
 RUN mkdir /myapp
 WORKDIR /myapp
-#RUN mkdir /usr/src/app
-#WORKDIR /usr/src/app
 
-COPY Gemfile Gemfile.lock ./
+COPY Gemfile ./
+COPY Gemfile.lock ./
+
 RUN bundle install
 
 COPY . .
-
-# ADD Gemfile /myapp/Gemfile
-# ADD Gemfile.lock /myapp/Gemfile.lock
-
-# RUN bundle install
