@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class PasswordsControllerTest < ActionController::TestCase
-  include Devise::TestHelpers
+  include Devise::Test::ControllerHelpers
   setup do
     request.env['devise.mapping'] = Devise.mappings[:user]
     @user = users(:erik)
@@ -15,7 +15,7 @@ class PasswordsControllerTest < ActionController::TestCase
     assert_response :success
     email = ActionMailer::Base.deliveries.last
     assert_equal [@user.email], email.to
-    
+
     assert_equal 'Adopt-a-drain Grand River Basin reset password instructions', email.subject
   end
 
