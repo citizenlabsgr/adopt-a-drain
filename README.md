@@ -10,7 +10,6 @@ A joint project with the [Grand Valley Metropolitan Council](http://www.gvmc.org
 
 **Project Guides:**
 * James W (Citizen Labs)
-* Rebecca A (Citizen Labs)
 * Cara D (LGROW)
 * Eileen B (LGROW)
 
