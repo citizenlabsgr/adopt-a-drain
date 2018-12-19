@@ -28,7 +28,7 @@ en:
   context:
     place: "Grand River Basin"
     place_abbr: "GRB"
-    lgrow_abbr: "LGROW"
+    lgrow_abbr: "LGRW"
   defaults:
     address: "address"
     address_1: "1 Dr Carlton B Goodlett Pl."
