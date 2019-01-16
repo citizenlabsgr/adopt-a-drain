@@ -37,3 +37,6 @@ public/assets
 
 # Ignore Process documents
 *.bmpr
+
+# Ignore MacOS file changes
+*.DS_Store
