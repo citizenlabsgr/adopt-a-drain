@@ -1,8 +1,11 @@
+# Install Adopt-A-Drain
+* Docker-compose is the easiest way for a Developer to get Adopt-A-Drain up and running.
+* We use Heroku to run our production install of Adopt-A-Drain.
 
 ## Prerequisites
 
 ### Developers
-The easiest way to get Adopt a Drain installed is using Docker-Compose
+
 * Install [Docker](https://www.docker.com/get-started) and [Docker-Compose](https://docs.docker.com/compose/install/) on your development box
 * A Developer needs a [data.world](https://data.world) account to get an API token 
 * A Developer needs a  [github](https://github.com) account
