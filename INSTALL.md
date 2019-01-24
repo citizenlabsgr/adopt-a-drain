@@ -62,10 +62,13 @@ Open a Terminal Window
     # make the application ready to accept connections
     docker-compose up
 
+
 ```
 #### Connect to Adopt-a-drain Application
 * Open a browser at http://localhost:3000
-
+```
+# Visit your website http://localhost:3000 (or the IP of your docker-machine)
+```
 #### What just happened? 
 * Sofware Install: The docker-compose command installed all the software necessary to run the Adopt-a-Drain application. The biggies are Postgres and Ruby on Rails.   
 * Database Install: Docker-compose created data tables in Postgres, e.g,  "things", "users", "reminders" tables.
@@ -73,22 +76,6 @@ Open a Terminal Window
 * Data Storage: By default, data is stored on a developer's local machine in the ~/data_cl_aad folder.
 * On success, Docker-compose makes the Adopt-a-drain ready to accept connections.
 
-### Set Environment Variables (.env)
-```
-
-    # Setup your docker based postgres database:
-    docker-compose run --rm web bundle exec rake db:setup
-
-    # Load data:
-    docker-compose run --rm web bundle exec rake data:load_things
-    # OR: don't load all that data, and load the seed data:
-    # docker-compose run --rm web bundle exec rake db:seed
-
-    # Start the web server:
-    docker-compose up
-
-    # Visit your website http://localhost:3000 (or the IP of your docker-machine)
-```    
 At this point, a Developer should be good to start jamming on issues [here](https://github.com/citizenlabsgr/adopt-a-drain/issues).
 
 ## Production Deployment
