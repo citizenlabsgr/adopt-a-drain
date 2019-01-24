@@ -56,11 +56,12 @@ Open a Terminal Window
     # you should be in the adopt-a-drain/ folder
     cd adopt-a-drain/ 
 
-    # first timers should build the containers
+    # make the application ready to accept connections
     docker-compose up
 
 ```
-
+#### Connect to Adopt-a-drain Application
+* Open a browser at http://localhost:3000
 
 #### What just happened? 
 * Sofware Install: The docker-compose command installed all the software necessary to run the Adopt-a-Drain application. The biggies are Postgres and Ruby on Rails.   
