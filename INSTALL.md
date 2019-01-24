@@ -46,12 +46,12 @@ Put .env in the adopt-a-drain folder of the cloned repo
     # URL for drain data
     OPEN_SOURCE=https://api.data.world/v0/sql/citizenlabs/grb-storm-drains
 ```
-* A Developer's will find it convenient to create an file (.env) to hold these variables. Put .env in the repo's adopt-a-drain/ folder.
-* An Administrator will need to configure these in Heroko.
+* A Developers will find it convenient to create an file (.env) to hold these variables. Put .env in the repo clone's adopt-a-drain/ folder.
+* An Administrator will need to configure environment variables in Heroko.
 
-See the [wiki](https://github.com/citizenlabsgr/adopt-a-drain/wiki/Windows-Development-Environment) for a guide on how to install this application on Windows.
+* See the [wiki](https://github.com/citizenlabsgr/adopt-a-drain/wiki/Windows-Development-Environment) for a guide on how to install this application on Windows.
 
-At this point you should be good to start jamming on issues [here](https://github.com/citizenlabsgr/adopt-a-drain/issues).
+
 
 #### Build & Run Adopt a Drain with Compose
 Open a Terminal Window
@@ -89,7 +89,7 @@ Open a Terminal Window
 
     # Visit your website http://localhost:3000 (or the IP of your docker-machine)
 ```    
-
+At this point, a Developer should be good to start jamming on issues [here](https://github.com/citizenlabsgr/adopt-a-drain/issues).
 
 ## Production Deployment
 
