@@ -53,22 +53,37 @@ Put .env in the adopt-a-drain folder of the cloned repo
 
 
 
-#### Build & Run Adopt a Drain with Compose
+#### Build Adopt a Drain with Compose
+Build caches steps to make docker-compose run faster 
 Open a Terminal Window
+Run the following if you change the Dockerfile, Docker-composer, GEMFILE or GEMLOCK.lock
 ```
-    # you should be in the adopt-a-drain/ folder
-    cd adopt-a-drain/ 
+                           # Open a command window
+    docker system prune    # Remove all unused containers, networks, images (both dangling and unreferenced) 
 
-    # make the application ready to accept connections
-    docker-compose up
+    cd adopt-a-drain/      # you should be in the adopt-a-drain/ folder
 
+    docker-compose build   # make the application ready to accept connections
 
 ```
+
+#### Run Adopt a Drain with Compose
+Open a Terminal Window
+```    
+                           # Open a command window
+    cd adopt-a-drain/      # you should be in the adopt-a-drain/ folder
+
+    docker-compose up      # make the application ready to accept connections
+
+```
+
 #### Connect to Adopt-a-drain Application
-* Open a browser at http://localhost:3000
+Make sure Adopt-a-drain is accepting connections.
 ```
+
 # Visit your website http://localhost:3000 (or the IP of your docker-machine)
 ```
+
 #### What just happened? 
 * Sofware Install: The docker-compose command installed all the software necessary to run the Adopt-a-Drain application. The biggies are Postgres and Ruby on Rails.   
 * Database Install: Docker-compose created data tables in Postgres, e.g,  "things", "users", "reminders" tables.
@@ -77,6 +92,21 @@ Open a Terminal Window
 * On success, Docker-compose makes the Adopt-a-drain ready to accept connections.
 
 At this point, a Developer should be good to start jamming on issues [here](https://github.com/citizenlabsgr/adopt-a-drain/issues).
+
+## Testing
+* Start the Docker containers 
+* Make sure http://localhost:3000 is accepting connections
+```
+                           # Open a command window
+    cd adopt-a-drain/      # you should be in the adopt-a-drain/ folder
+
+    docker-compose up      # make the application ready to accept connections    
+
+    docker-compose run web bundle exec rake test   # Run tests
+    
+```
+
+
 
 ## Production Deployment
 
