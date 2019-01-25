@@ -1,64 +1,92 @@
+# Install Adopt-A-Drain
+* Docker-compose is the easiest way for a Developer to get Adopt-A-Drain up and running.
+* We use Heroku to run our production install of Adopt-A-Drain.
+
 ## Prerequisites
-* This application requires [Postgres](http://www.postgresql.org/) to be installed.
+
+### Developers
+
+* Install [Docker](https://www.docker.com/get-started) and [Docker-Compose](https://docs.docker.com/compose/install/) on your development box
+* A Developer needs a [data.world](https://data.world) account to get an API token 
+* A Developer needs a  [github](https://github.com) account
+* A Developer needs a [google map] (https://cloud.google.com/maps-platform/)
+
+### Production
+* Adopt a Drain requires [Postgres](http://www.postgresql.org/) to be installed.
 * We also recommend using a ruby version manager such as [rbenv](https://github.com/rbenv/rbenv).
-* You will need a data.world account to get an API token
+* An Administrator needs a [data.world](https://data.world) account to get an API token 
+* An Administrator needs a  [github](https://github.com) account
+* An Administrator needs a [google map] (https://cloud.google.com/maps-platform/)
 
 ## Installation
-
+### Developer
+#### Clone the Repo
+On your local machine, open a Terminal window
+```
     git clone git://github.com/sfbrigade/adopt-a-drain.git
     cd adopt-a-drain
-    bundle install
+```
 
-    bundle exec rake db:create
-    bundle exec rake db:schema:load
+#### Add an Environment Variables (.env)
+Put .env in the adopt-a-drain folder of the cloned repo
+```
+    # Postgres db variables:
+    DB_HOST=db
+    DB_USER=postgres
 
-See the [wiki](https://github.com/citizenlabsgr/adopt-a-drain/wiki/Windows-Development-Environment) for a guide on how to install this application on Windows.
+    # Enable google maps with your dev or prod google map api key
+    GOOGLE_MAPS_JAVASCRIPT_API_KEY=<get-google-map-api-key> >>
 
-At this point you should be good to start jamming on issues [here](https://github.com/citizenlabsgr/adopt-a-drain/issues).
+    # Provide an owner id for the drain data.
+    DW_USER=citizenlabs
 
-## Docker
+    # Enable data.world data with your "read/write" api token
+    DW_AUTH_TOKEN=<get-data.world-api-token> 
 
-To setup a local development environment with
-[Docker](https://docs.docker.com/engine/installation/).
+    # URL for drain data
+    OPEN_SOURCE=https://api.data.world/v0/sql/citizenlabs/grb-storm-drains
+```
+* A Developers will find it convenient to create an file (.env) to hold these variables. Put .env in the repo clone's adopt-a-drain/ folder.
+* An Administrator will need to configure environment variables in Heroko.
+
+* See the [wiki](https://github.com/citizenlabsgr/adopt-a-drain/wiki/Windows-Development-Environment) for a guide on how to install this application on Windows.
+
+
+
+#### Build & Run Adopt a Drain with Compose
+Open a Terminal Window
+```
+    # you should be in the adopt-a-drain/ folder
+    cd adopt-a-drain/ 
+
+    # make the application ready to accept connections
+    docker-compose up
+
 
 ```
-# Override database settings as the docker host:
-echo DB_HOST=db > .env
-echo DB_USER=postgres >> .env
-
-# Enable google maps with your dev or prod google map api key
-echo GOOGLE_MAPS_JAVASCRIPT_API_KEY=<get-google-map-api-key> >> .env
-
-# Provide an owner id for the drain data.
-echo DW_USER=citizenlabs
-
-# Enable data.world data with your "read/write" api token
-echo DW_AUTH_TOKEN=<get-data.world-api-token> >> .env
-
-# URL for drain data
-echo OPEN_SOURCE=https://api.data.world/v0/sql/citizenlabs/grb-storm-drains >> .env
-
-# Setup your docker based postgres database:
-docker-compose run --rm web bundle exec rake db:setup
-
-# Load data:
-docker-compose run --rm web bundle exec rake data:load_things
-# OR: don't load all that data, and load the seed data:
-# docker-compose run --rm web bundle exec rake db:seed
-
-# Start the web server:
-docker-compose up
-
+#### Connect to Adopt-a-drain Application
+* Open a browser at http://localhost:3000
+```
 # Visit your website http://localhost:3000 (or the IP of your docker-machine)
 ```
+#### What just happened? 
+* Sofware Install: The docker-compose command installed all the software necessary to run the Adopt-a-Drain application. The biggies are Postgres and Ruby on Rails.   
+* Database Install: Docker-compose created data tables in Postgres, e.g,  "things", "users", "reminders" tables.
+* Data Install: Docker-compose calls rails tasks to load drain data into the things table.
+* Data Storage: By default, data is stored on a developer's local machine in the ~/data_cl_aad folder.
+* On success, Docker-compose makes the Adopt-a-drain ready to accept connections.
 
-## Usage
-    rails server
+At this point, a Developer should be good to start jamming on issues [here](https://github.com/citizenlabsgr/adopt-a-drain/issues).
 
-## Seed Data
-    bundle exec rake data:load_drains
+## Production Deployment
 
-## Deploying to Heroku
+### Prerequisites
+* Adopt a Drain requires and install of Postgres [Postgres](http://www.postgresql.org/).
+* We also recommend using a ruby version manager such as [rbenv](https://github.com/rbenv/rbenv).
+* You will need a data.world account to get an API token.
+* You will need to install the environment variables, listed above, in [Heroku]().
+
+### Deploying to Heroku
 A successful deployment to Heroku requires a few setup steps:
 
 1. Generate a new secret token:
