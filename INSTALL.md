@@ -54,8 +54,11 @@ Put .env in the adopt-a-drain folder of the cloned repo
 
 
 #### Build Adopt a Drain with Compose
+Build caches steps to make docker-compose run faster 
 Open a Terminal Window
+Run the following if you change the Dockerfile, Docker-composer, GEMFILE or GEMLOCK.lock
 ```
+                           # Open a command window
     docker system prune    # Remove all unused containers, networks, images (both dangling and unreferenced) 
 
     cd adopt-a-drain/      # you should be in the adopt-a-drain/ folder
@@ -67,6 +70,7 @@ Open a Terminal Window
 #### Run Adopt a Drain with Compose
 Open a Terminal Window
 ```    
+                           # Open a command window
     cd adopt-a-drain/      # you should be in the adopt-a-drain/ folder
 
     docker-compose up      # make the application ready to accept connections
@@ -74,8 +78,9 @@ Open a Terminal Window
 ```
 
 #### Connect to Adopt-a-drain Application
-Open a Browser
+Make sure Adopt-a-drain is accepting connections.
 ```
+
 # Visit your website http://localhost:3000 (or the IP of your docker-machine)
 ```
 
@@ -92,9 +97,13 @@ At this point, a Developer should be good to start jamming on issues [here](http
 * Start the Docker containers 
 * Make sure http://localhost:3000 is accepting connections
 ```
-    # Run tests
+                           # Open a command window
+    cd adopt-a-drain/      # you should be in the adopt-a-drain/ folder
 
-    docker-compose run web bundle exec rake test
+    docker-compose up      # make the application ready to accept connections    
+
+    docker-compose run web bundle exec rake test   # Run tests
+    
 ```
 
 
