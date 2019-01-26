@@ -111,7 +111,7 @@ en:
     thank_you: "Thank you for adopting this %{thing}!"
     email_text: "I just adopted one of the %{context}'s 40,000+ storm drains and pledged to help keep it clear of leaves and debris. You, too, can Adopt a Drain and help the community avoid flooding at %{root_url}."
     tweet_text: "Flooded streets aren't fun. I adopted my own Grand River Basin storm drain at %{root_url}. Claim and name yours #LGROWSewer @LGROWWater"
-    tos: "Terms of Service"
+    tos: "Terms of Use"
   site:
     description: "You can adopt one of %{context}'s 40,000+ storm drains and pledge to help keep it clear of leaves and debris this rainy season. Lend a hand and help the community avoid flooding."
   sponsors:
