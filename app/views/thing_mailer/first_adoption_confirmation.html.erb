@@ -2,7 +2,8 @@
   <table width="100%" border="0" cellspacing="0" cellpadding="0">
     <tr>
       <td style="text-align: center;">
-        <%= image_tag image_url("logos/adopt-a-drain.png"), :alt => "grbwater adopt-a-drain logo", :title => "grbwater adopt-a-drain logo" %>
+        <%= image_tag attachments['adopt-a-drain.png'].url, :alt => "grbwater adopt-a-drain logo", :title => "grbwater adopt-a-drain logo", :style => "max-width:800px"
+        %>
       </td>
     </tr>
   </table>
@@ -65,7 +66,7 @@
   <table width="100%" border="0" cellspacing="0" cellpadding="0">
     <tr>
       <td style="text-align: center;">
-        <%= image_tag image_url("adoptadrain-event.png"), :alt => "adopt-a-drain event", :title => "adopt-a-drain event" %>
+        <%= image_tag attachments['adoptadrain-event.png'].url, :alt => "adopt-a-drain event", :title => "adopt-a-drain event" %>
         <p style="font-style: italic; font-size: 10px;">
           Adopt a Drain VIP event
         </p>
@@ -110,7 +111,17 @@
   <p style="font-style: italic; font-size: 11px;">
    If you would like to receive quarterly LGROW emails, please sign up <a href="https://www.lgrow.org">HERE</a>.
   </p>
-
+  <a href="https://www.facebook.com/LGROW.org" style="text-decoration:none !important;">
+    <%= image_tag attachments['facebook.png'].url, :alt => "grbwater facebook", :title => "grbwater facebook" %>
+  </a>
+  &nbsp;
+  <a href="https://twitter.com/LGROW_GVMC" style="text-decoration:none !important;">
+    <%= image_tag attachments['twitter.png'].url, :alt => "grbwater twitter", :title => "grbwater twitter" %>
+  </a>
+  &nbsp;
+  <a href="https://www.instagram.com/lgrow_org/" style="text-decoration:none !important;">
+    <%= image_tag attachments['instagram.png'].url, :alt => "grbwater instagram", :title => "grbwater instagram" %>
+  </a>
 
   <p style="font-style: italic; font-size: 11px;">
    Thank you.
