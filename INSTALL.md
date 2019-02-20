@@ -9,33 +9,36 @@
 * Install [Docker](https://www.docker.com/get-started) and [Docker-Compose](https://docs.docker.com/compose/install/) on your development box
 * A Developer needs a [data.world](https://data.world) account to get an API token 
 * A Developer needs a  [github](https://github.com) account
-* A Developer needs a [google map] (https://cloud.google.com/maps-platform/)
+* A Developer needs a [google map api key](https://developers.google.com/maps/documentation/javascript/get-api-key). If you are a permanent Citizen Labs developer, talk to the team about sharing a key. The personal api key process will require a credit card to prove you're not a robot. 
 
 ### Production
 * Adopt a Drain requires [Postgres](http://www.postgresql.org/) to be installed.
 * We also recommend using a ruby version manager such as [rbenv](https://github.com/rbenv/rbenv).
 * An Administrator needs a [data.world](https://data.world) account to get an API token 
 * An Administrator needs a  [github](https://github.com) account
-* An Administrator needs a [google map] (https://cloud.google.com/maps-platform/)
+* An Administrator needs a [google map](https://cloud.google.com/maps-platform/) account
 
 ## Installation
 ### Developer
 #### Clone the Repo
 On your local machine, open a Terminal window
 ```
-    git clone git://github.com/sfbrigade/adopt-a-drain.git
+    git clone https://github.com/citizenlabsgr/adopt-a-drain.git
     cd adopt-a-drain
 ```
 
+#### Get a Google API key 
+
+
 #### Add an Environment Variables (.env)
-Put .env in the adopt-a-drain folder of the cloned repo
+Put `.env` in the adopt-a-drain folder of the cloned repo
 ```
     # Postgres db variables:
     DB_HOST=db
     DB_USER=postgres
 
     # Enable google maps with your dev or prod google map api key
-    GOOGLE_MAPS_JAVASCRIPT_API_KEY=<get-google-map-api-key> >>
+    GOOGLE_MAPS_JAVASCRIPT_API_KEY=<get-google-map-api-key>
 
     # Provide an owner id for the drain data.
     DW_USER=citizenlabs
@@ -46,8 +49,8 @@ Put .env in the adopt-a-drain folder of the cloned repo
     # URL for drain data
     OPEN_SOURCE=https://api.data.world/v0/sql/citizenlabs/grb-storm-drains
 ```
-* A Developers will find it convenient to create an file (.env) to hold these variables. Put .env in the repo clone's adopt-a-drain/ folder.
-* An Administrator will need to configure environment variables in Heroko.
+* Creating a file (`.env`) to hold these variables will be more convenient for you. Put `.env` in the repo clone's `adopt-a-drain/` folder.
+* An Administrator will need to configure environment variables in Heroku.
 
 * See the [wiki](https://github.com/citizenlabsgr/adopt-a-drain/wiki/Windows-Development-Environment) for a guide on how to install this application on Windows.
 
