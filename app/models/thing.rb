@@ -6,7 +6,7 @@ class Thing < ActiveRecord::Base
   extend Forwardable
   include ActiveModel::ForbiddenAttributesProtection
 
-  VALID_DRAIN_TYPES = ['Storm Water Inlet Drain', 'Catch Basin Drain'].freeze
+  VALID_DRAIN_TYPES = ['Storm Drain', 'Storm Water Inlet Drain', 'Catch Basin Drain'].freeze
 
   belongs_to :user
   def_delegators :reverse_geocode, :city, :country, :country_code,

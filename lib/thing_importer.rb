@@ -53,8 +53,8 @@ class ThingImporter
     def invalid_thing(thing)
       # bare minimum validation of imported data
       rc = true
-      # make sure type value is a "Storm Water Inlet Drain" or "Catch Basin Drain"
-      if not ['Storm Water Inlet Drain', 'Catch Basin Drain'].include?(thing[:type])
+      # make sure type value is a acceptable
+      if not ['Storm Drain', 'Storm Water Inlet Drain', 'Catch Basin Drain'].include?(thing[:type])
         rc = false
         raise "Unknown drain type: "
       end
