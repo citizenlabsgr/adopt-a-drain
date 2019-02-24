@@ -629,6 +629,7 @@ $(function() {
             activeInfoWindow.open(map, activeMarker);
             activeMarker.setIcon(adoptedByYouMarker);
             activeMarker.setAnimation(google.maps.Animation.BOUNCE);
+            setTimeout(function(){ activeMarker.setAnimation(null); }, 2800);
           }
         });
       }
