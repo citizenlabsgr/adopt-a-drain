@@ -1,11 +1,6 @@
 <table width="100%" border="0" cellspacing="0" cellpadding="0" style="font-family: Arial, Helvetica, sans-serif; font-size: 12px;"><tr><td>
-  <table width="100%" border="0" cellspacing="0" cellpadding="0">
-    <tr>
-      <td style="text-align: center;">
-        <%= image_tag image_url("logos/adopt-a-drain.png"), :alt => "grbwater adopt-a-drain logo", :title => "grbwater adopt-a-drain logo" %>
-      </td>
-    </tr>
-  </table>
+  
+  <%= render :partial => 'logo_header' %>
 
   <p>
     Dear <%= @user.name.split.first %>,
@@ -19,53 +14,15 @@
     hashtags #DrainHero, #AdoptADrain and #LGROWSewer in your posts.
   </p>
 
-  <!--p>
-    If you encounter medical waste, construction debris, or if the drain is
-    clogged beneath the grate, <a
-    href="http://www.sf311.org/index.aspx?page=127">report to 311</a> to have
-    it cleared by LGROW.
-  </p-->
-
   <p>
     As always, please let us know if you have any feedback or questions about
     this program. We love to hear from you.
   </p>
 
-  <p>
-    Sincerely,
-  </p>
-  <p>
-    <a href="https://adoptadrain-lgrow.org/">Adopt a Drain</a> Team
-    <br />
-    <a href="mailto:hello@citizenlabs.org">hello@citizenlabs.org</a>
-  </p>
+  <%= render :partial => 'signature' %>
 
-  <p>
-    <em>
-      Remember, LGROW, County nor State government won't be held responsible
-      for anything that happens to you or others in service of maintaining your
-      drain. Please be careful.
-    </em>
-  </p>
+  <%= render :partial => 'email_footer' %>
 
-  <p style="font-style: italic; font-size: 11px;">
-    If you move or are no longer able to tend to your drain, please abandon it on
-    <a href="adoptadrain-lgrow.org">https://adoptadrain-lgrow.org</a>. Thank you.
-  </p>
+  <%= render :partial => 'social_media' %>
 
-  <p>
-
-    <a href="https://www.facebook.com/LGROW.org" style="text-decoration:none !important;">
-      <%= image_tag image_url("icons/facebook.png"), :alt => "grbwater facebook", :title => "grbwater facebook" %>
-    </a>
-    &nbsp;
-    <a href="https://twitter.com/LGROW_GVMC" style="text-decoration:none !important;">
-      <%= image_tag image_url("icons/twitter.png"), :alt => "grbwater twitter", :title => "grbwater twitter" %>
-    </a>
-    &nbsp;
-    <a href="https://www.instagram.com/lgrow_org/" style="text-decoration:none !important;">
-      <%= image_tag image_url("icons/instagram.png"), :alt => "grbwater instagram", :title => "grbwater instagram" %>
-    </a>
-
-  </p>
 </td></tr></table>

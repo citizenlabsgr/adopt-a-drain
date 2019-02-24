@@ -1,12 +1,6 @@
 <table width="100%" border="0" cellspacing="0" cellpadding="0" style="font-family: Arial, Helvetica, sans-serif; font-size: 12px;"><tr><td>
-  <table width="100%" border="0" cellspacing="0" cellpadding="0">
-    <tr>
-      <td style="text-align: center;">
-        <%= image_tag attachments['adopt-a-drain.png'].url, :alt => "grbwater adopt-a-drain logo", :title => "grbwater adopt-a-drain logo", :style => "max-width:800px"
-        %>
-      </td>
-    </tr>
-  </table>
+
+  <%= render :partial => 'logo_header' %>
 
   <p>
     Dear <%= @user.name.split.first %>,
@@ -18,114 +12,61 @@
     to protect the environment, manage stormwater, and minimize flooding.
   </p>
 
-  <h2 style="font-size: 1.05em">How to Care For Your Adopted Drain</h2>
+  <h2 style="font-size: 1.05em; margin-top: 30px;">How to Care For Your Adopted Drain</h2>
 
   <ul>
-    <li>
+    <li style="margin-bottom: 10px;">
       Check the weather report weekly. If possible, clear leaves and debris off
       the drain before it starts raining and shovel snow off the drain in winter.
     </li>
-    <li>
+    <li style="margin-bottom: 10px;">
       Remove leaves, other natural materials, and trash. Compost if possible or
       dispose of them according to your community’s guidelines.
     </li>
-    <li>
+    <li style="margin-bottom: 10px;">
       Clear about 10 feet on both sides of the drain.
     </li>
-    <li>
+    <li style="margin-bottom: 10px;">
       Did you find medical waste or needles? Construction debris? Toxic materials?
       Follow your community’s instructions for disposal guideline.
       For more information, click <a href="https://www.lgrow.org/disposal">HERE</a>
     </li>
   </ul>
 
-  <h2 style="font-size: 1.05em">Drain Cleaning Safety Tips</h2>
+  <h2 style="font-size: 1.05em; margin-top: 30px;">Drain Cleaning Safety Tips</h2>
 
   <ul>
-    <li>
-      Never try to lift/remove the drain grate.
+    <li style="margin-bottom: 10px;">
+      Please stay out of the street as much as possible. 
+      Place yourself in the right of way (the area between the 
+      sidewalk and the street) to clear the drain.
     </li>
-    <li>
-      Clear from the sidewalk or side of the road, not the street.
-    </li>
-    <li>
-      Wear reflective clothing so vehicles can see you.
-    </li>
-    <li>
+    <li style="margin-bottom: 10px;">
       Always wear gloves and be careful of sharp objects!
     </li>
-    <li>
+    <li style="margin-bottom: 10px;">
       Use a rake, broom, or shovel if possible.
     </li>
-    <li>
+    <li style="margin-bottom: 10px;">
+      Never try to lift/remove the drain grate.
+    </li>
+    <li style="margin-bottom: 10px;">
+      Wear reflective clothing so vehicles can see you.
+    </li>
+    <li style="margin-bottom: 10px;">
       Dispose of waste appropriately. Visit <a href="https://www.lgrow.org/disposal">www.LGROW.org</a> to find out
       how to properly dispose of yard and household hazardous wastes in your community.
     </li>
   </ul>
 
-  <table width="100%" border="0" cellspacing="0" cellpadding="0">
-    <tr>
-      <td style="text-align: center;">
-        <%= image_tag attachments['adoptadrain-event.png'].url, :alt => "adopt-a-drain event", :title => "adopt-a-drain event" %>
-        <p style="font-style: italic; font-size: 10px;">
-          Adopt a Drain VIP event
-        </p>
-      </td>
-    </tr>
-  </table>
-
-  <p>
-    Keep an eye out for an email invitation to attend one of our VIP Volunteer
-    events, where you will be able to receive drain cleaning tools and
-    training. We also send periodic email reminders to clear your drains.
-  </p>
-
-  <p>
+  <p style="margin-top: 30px">
     Thanks again, <%= @user.name.split.first %>, for adopting a drain in the Lower Grand River Watershed. When each of us helps out a little, it makes a big difference!
   </p>
 
-  <p>
-    Sincerely,
-  </p>
-  <p>
-    The LGROW Team
-    <br />
-    Keep your Lakes Great and your River Grand
-    ph. 616-776-7605
+  <%= render :partial => 'signature' %>  
 
-    <a href="mailto:adoptadrain@lgrow.org">adoptadrain@lgrow.org</a>
-  </p>
+  <%= render :partial => 'email_footer' %>
 
-  <p>
-    <em>
-      Remember, GVMC & Sponsoring Jurisdictions won't be held responsible for anything that
-      happens to you or others in service of maintaining your drain. Please be careful!
-    </em>
-  </p>
-
-  <p style="font-style: italic; font-size: 11px;">
-    If you move or are no longer able to tend to your drain, please abandon it on
-    <a href="http://www.adoptadrain-lgrow.org">www.adoptadrain-lgrow.org</a>. Thank you.
-  </p>
-
-  <p style="font-style: italic; font-size: 11px;">
-   If you would like to receive quarterly LGROW emails, please sign up <a href="https://www.lgrow.org">HERE</a>.
-  </p>
-  <a href="https://www.facebook.com/LGROW.org" style="text-decoration:none !important;">
-    <%= image_tag attachments['facebook.png'].url, :alt => "grbwater facebook", :title => "grbwater facebook" %>
-  </a>
-  &nbsp;
-  <a href="https://twitter.com/LGROW_GVMC" style="text-decoration:none !important;">
-    <%= image_tag attachments['twitter.png'].url, :alt => "grbwater twitter", :title => "grbwater twitter" %>
-  </a>
-  &nbsp;
-  <a href="https://www.instagram.com/lgrow_org/" style="text-decoration:none !important;">
-    <%= image_tag attachments['instagram.png'].url, :alt => "grbwater instagram", :title => "grbwater instagram" %>
-  </a>
-
-  <p style="font-style: italic; font-size: 11px;">
-   Thank you.
-  </p>
-
+  <%= render :partial => 'social_media' %>
 
 </td></tr></table>
