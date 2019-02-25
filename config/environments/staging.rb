@@ -6,7 +6,7 @@ Rails.application.configure do
 
   # asset host
   # $HEROKU_APP_NAME is used for review apps
-  config.action_controller.asset_host = "https://#{ENV['HEROKU_APP_NAME'] || 'adoptadrainsf-staging'}.herokuapp.com/"
+  config.action_controller.asset_host = "https://#{ENV['HEROKU_APP_NAME'] || 'lgrow-staging'}.herokuapp.com/"
   config.action_mailer.asset_host = config.action_controller.asset_host
 
   # Eager load code on boot. This eager loads most of Rails and
@@ -69,7 +69,7 @@ Rails.application.configure do
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default_url_options = {host: 'adoptadrain-lgrow.org'}
+  config.action_mailer.default_url_options = {host: config.action_controller.asset_host}
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
