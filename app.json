@@ -26,6 +26,9 @@
     "SECRET_KEY_BASE": {
       "generator": "secret"
     },
+    "DEVISE_SECRET": {
+      "generator": "secret"
+    },
     "DW_AUTH_TOKEN": {
       "required": true
     },
