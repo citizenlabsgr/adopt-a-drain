@@ -3,20 +3,32 @@ class ThingMailer < ApplicationMailer
     @thing = thing
     @user = thing.user
 
+    attachments.inline['adopt-a-drain.png'] = File.read("#{Rails.root.to_s + '/app/assets/images/logos/adopt-a-drain.png'}")
+    attachments.inline['facebook.png'] = File.read("#{Rails.root.to_s + '/app/assets/images/icons/facebook.png'}")
+    attachments.inline['twitter.png'] = File.read("#{Rails.root.to_s + '/app/assets/images/icons/twitter.png'}")
+    attachments.inline['instagram.png'] = File.read("#{Rails.root.to_s + '/app/assets/images/icons/instagram.png'}")
+
     mail(to: @user.email, subject: ["Thanks for adopting a drain, #{@user.name.split.first}!"])
   end
 
   def second_adoption_confirmation(thing)
     @thing = thing
     @user = thing.user
+
+    attachments.inline['adopt-a-drain.png'] = File.read("#{Rails.root.to_s + '/app/assets/images/logos/adopt-a-drain.png'}")
+    attachments.inline['facebook.png'] = File.read("#{Rails.root.to_s + '/app/assets/images/icons/facebook.png'}")
+    attachments.inline['twitter.png'] = File.read("#{Rails.root.to_s + '/app/assets/images/icons/twitter.png'}")
+    attachments.inline['instagram.png'] = File.read("#{Rails.root.to_s + '/app/assets/images/icons/instagram.png'}")
+
     mail(to: @user.email, subject: ["Thanks for adopting another drain, #{@user.name.split.first}!"])
   end
 
-  def third_adoption_confirmation(thing)
-    @thing = thing
-    @user = thing.user
-    mail(to: @user.email, subject: ["We really do love you, #{@user.name.split.first}!"])
-  end
+  # This email is unused at this time
+  # def third_adoption_confirmation(thing)
+  #   @thing = thing
+  #   @user = thing.user
+  #   mail(to: @user.email, subject: ["We really do love you, #{@user.name.split.first}!"])
+  # end
 
   def reminder(thing)
     @thing = thing
