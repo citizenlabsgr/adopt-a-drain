@@ -32,9 +32,7 @@
     "DW_USER": {
       "required": true
     },
-    "OPEN_SOURCE": {
-      "required": true
-    }
+    "OPEN_SOURCE": "https://api.data.world/v0/sql/citizenlabs/grb-storm-drains-test"
   },
   "addons": [
     "airbrake",
