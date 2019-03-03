@@ -38,7 +38,12 @@
   },
   "addons": [
     "airbrake",
-    "heroku-postgresql:hobby-basic",
+    {
+      "plan": "heroku-postgresql:hobby-basic",
+      "options": {
+        "version": "9.6"
+      }
+    },
     "sendgrid"
   ],
   "buildpacks": [
