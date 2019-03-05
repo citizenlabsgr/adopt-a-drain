@@ -31,6 +31,7 @@ class Thing < ActiveRecord::Base
     find_by_sql([query, lat.to_f, lng.to_f, lat.to_f, limit.to_i])
   end
 
+  # People get to name their drains
   def display_name
     (adopted? ? adopted_name : name) || ''
   end

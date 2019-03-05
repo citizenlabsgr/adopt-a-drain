@@ -38,7 +38,7 @@ $(function() {
       handleNoGeolocation(browserSupportFlag);
     });
   }
-  // Browser doesn't support Geolocation
+  // Browser does not support Geolocation
   else {
     browserSupportFlag = false;
     handleNoGeolocation(browserSupportFlag);
@@ -269,6 +269,27 @@ $(function() {
       } else {
         adoptedThings[key][1].setIcon(adoptedMarker);
       }
+    }
+  }
+  /* Ajax call to reopen the 'right' info window for the current state */
+  function refreshInfoWindow() {
+    if (activeThingId == null 
+      || activeThingId === null 
+      || activeThingId === undefined) {
+
+    } else {
+      $.ajax({
+        type: 'GET',
+        url: '/info_window',
+        data: {
+          'thing_id': activeThingId
+        },
+        success: function(data) {
+          activeInfoWindow.close();
+          activeInfoWindow.setContent(data);
+          activeInfoWindow.open(map, activeMarker);
+        }
+      });
     }
   }
   function showFlash(type, message) {
@@ -518,6 +539,7 @@ $(function() {
                 $('.sidebar').addClass('signed-in');
                 $('.sidebar').removeClass('sidebar-full');
                 $('#content').html(data);
+                refreshInfoWindow();
               }
             });
           }
@@ -563,6 +585,7 @@ $(function() {
                 $('#content').html(data);
                 current_user_id = $('#current_user_id').val();
                 flipMarkers();
+                refreshInfoWindow();
               }
             });
           }
@@ -629,6 +652,14 @@ $(function() {
             activeInfoWindow.open(map, activeMarker);
             activeMarker.setIcon(adoptedByYouMarker);
             activeMarker.setAnimation(google.maps.Animation.BOUNCE);
+          }
+        });
+        /* Refresh the list of 'My Drains' in the sidebar */
+        $.ajax({
+          type: 'GET',
+          url: '/sidebar/search',
+          success: function(data) {
+            $('#content').html(data);
           }
         });
       }
@@ -840,6 +871,7 @@ $(function() {
             $('#content').html(data);
           }
         });
+        refreshInfoWindow();
       }
     });
     return false;
@@ -854,9 +886,7 @@ $(function() {
         $(submitButton).attr("disabled", false);
       },
       success: function(data) {
-        activeInfoWindow.close();
-        activeInfoWindow.setContent(data);
-        activeInfoWindow.open(map, activeMarker);
+        refreshInfoWindow();
       }
     });
     return false;
