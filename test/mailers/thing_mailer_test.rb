@@ -14,6 +14,27 @@ class ThingMailerTest < ActionMailer::TestCase
     assert_equal 'Thanks for adopting a drain, Erik!', email.subject
   end
 
+  # https://github.com/rails/rails/blob/master/actionmailer/test/base_test.rb
+  test "first_adopted_confirmation inline attachments" do
+    @user = users(:erik)
+    @thing = things(:thing_1)
+    @thing.user = @user
+
+    assert(File.exists?("#{Rails.root.to_s + '/app/assets/images/logos/adopt-a-drain.png'}"))
+    assert(File.exists?("#{Rails.root.to_s + '/app/assets/images/icons/facebook.png'}"))
+    assert(File.exists?("#{Rails.root.to_s + '/app/assets/images/icons/twitter.png'}"))
+    assert(File.exists?("#{Rails.root.to_s + '/app/assets/images/icons/instagram.png'}"))
+
+    email = ThingMailer.first_adoption_confirmation(@thing)
+    assert_nothing_raised { email.message }
+
+    assert_equal ["image/png; filename=adopt-a-drain.png",
+                    "image/png; filename=facebook.png",
+                    "image/png; filename=twitter.png",
+                    "image/png; filename=instagram.png"],
+                email.attachments.inline.map { |a| a["Content-Type"].to_s }
+  end
+
   test 'second_adoption_confirmation' do
     @user = users(:erik)
     @thing = things(:thing_1)
@@ -27,18 +48,60 @@ class ThingMailerTest < ActionMailer::TestCase
     assert_equal 'Thanks for adopting another drain, Erik!', email.subject
   end
 
-  test 'third_adoption_confirmation' do
+  test "second_adopted_confirmation inline attachments" do
     @user = users(:erik)
     @thing = things(:thing_1)
     @thing.user = @user
 
-    email = ThingMailer.third_adoption_confirmation(@thing).deliver_now
+    assert(File.exists?("#{Rails.root.to_s + '/app/assets/images/logos/adopt-a-drain.png'}"))
+    assert(File.exists?("#{Rails.root.to_s + '/app/assets/images/icons/facebook.png'}"))
+    assert(File.exists?("#{Rails.root.to_s + '/app/assets/images/icons/twitter.png'}"))
+    assert(File.exists?("#{Rails.root.to_s + '/app/assets/images/icons/instagram.png'}"))
 
-    assert_not ActionMailer::Base.deliveries.empty?
-    assert_equal ['hello@citizenlabs.org'], email.from
-    assert_equal ['erik@example.com'], email.to
-    assert_equal 'We really do love you, Erik!', email.subject
+    email = ThingMailer.second_adoption_confirmation(@thing)
+    assert_nothing_raised { email.message }
+
+    assert_equal ["image/png; filename=adopt-a-drain.png",
+                    "image/png; filename=facebook.png",
+                    "image/png; filename=twitter.png",
+                    "image/png; filename=instagram.png"],
+                email.attachments.inline.map { |a| a["Content-Type"].to_s }
   end
+
+  # This email unused at this time
+  # test 'third_adoption_confirmation' do
+  #   @user = users(:erik)
+  #   @thing = things(:thing_1)
+  #   @thing.user = @user
+
+  #   email = ThingMailer.third_adoption_confirmation(@thing).deliver_now
+
+  #   assert_not ActionMailer::Base.deliveries.empty?
+  #   assert_equal ['hello@citizenlabs.org'], email.from
+  #   assert_equal ['erik@example.com'], email.to
+  #   assert_equal 'We really do love you, Erik!', email.subject
+  # end
+
+  # This email unused at this time
+  # test "third_adopted_confirmation inline attachments" do
+  #   @user = users(:erik)
+  #   @thing = things(:thing_1)
+  #   @thing.user = @user
+
+  #   assert(File.exists?("#{Rails.root.to_s + '/app/assets/images/logos/adopt-a-drain.png'}"))
+  #   assert(File.exists?("#{Rails.root.to_s + '/app/assets/images/icons/facebook.png'}"))
+  #   assert(File.exists?("#{Rails.root.to_s + '/app/assets/images/icons/twitter.png'}"))
+  #   assert(File.exists?("#{Rails.root.to_s + '/app/assets/images/icons/instagram.png'}"))
+
+  #   email = ThingMailer.third_adoption_confirmation(@thing)
+  #   assert_nothing_raised { email.message }
+
+  #   assert_equal ["image/png; filename=adopt-a-drain.png",
+  #                   "image/png; filename=facebook.png",
+  #                   "image/png; filename=twitter.png",
+  #                   "image/png; filename=instagram.png"],
+  #               email.attachments.inline.map { |a| a["Content-Type"].to_s }
+  # end
 
   test 'thing_update_report' do
     admin1 = users(:admin)

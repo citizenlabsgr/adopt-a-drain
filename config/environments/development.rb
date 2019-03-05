@@ -9,8 +9,18 @@ Rails.application.configure do
   config.cache_classes = false
 
   # asset host
-  # config.action_controller.asset_host = 'http://' + Socket.ip_address_list[1].ip_address + ':3000'
-  # config.action_mailer.asset_host = config.action_controller.asset_host
+  config.action_controller.asset_host = Proc.new { |source, request|
+    # source = "/assets/brands/stockholm_logo_horizontal.png"
+    # request = A full-fledged ActionDispatch::Request instance
+
+    # sometimes request is nil and everything breaks
+    scheme = request.try(:scheme).presence || "http"
+    host = request.try(:host).presence || "localhost:3000"
+    port = request.try(:port).presence || nil
+
+    ["#{scheme}://#{host}", port].reject(&:blank?).join(":")
+  }
+  config.action_mailer.asset_host = config.action_controller.asset_host
 
   # Do not eager load code on boot.
   config.eager_load = false
@@ -20,8 +30,19 @@ Rails.application.configure do
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
   config.action_mailer.default_url_options = {host: 'localhost:3000'}
+
+  # Note: if you do this, you need to change your security settings on your google account
+  ActionMailer::Base.smtp_settings = {
+  :address        => 'smtp.gmail.com',
+  :domain         => 'mail.google.com',
+  :port           => 587,
+  :user_name      => 'example@gmail.com',
+  :password       => 'examplePlainTextPassword',
+  :authentication => :plain,
+  :enable_starttls_auto => true
+}
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
@@ -48,5 +69,5 @@ Rails.application.configure do
 
   # For Mailcatcher
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {address: 'localhost', port: 1025}
+  # config.action_mailer.smtp_settings = {address: 'localhost', port: 1025}
 end
