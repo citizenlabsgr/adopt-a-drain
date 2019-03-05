@@ -292,6 +292,16 @@ $(function() {
       });
     }
   }
+  /* Ajax call to refresh the list of 'My Drains' in the sidebar */
+  function refreshMyDrains() {
+      $.ajax({
+        type: 'GET',
+        url: '/sidebar/search',
+        success: function(data) {
+          $('#content').html(data);
+        }
+      });
+    }
   function showFlash(type, message) {
     $('#content').prepend(
         $('<div></div>').addClass('alert fade in alert-' + type).data('alert', '').append(
@@ -655,14 +665,7 @@ $(function() {
             setTimeout(function(){ activeMarker.setAnimation(null); }, 2800);
           }
         });
-        /* Refresh the list of 'My Drains' in the sidebar */
-        $.ajax({
-          type: 'GET',
-          url: '/sidebar/search',
-          success: function(data) {
-            $('#content').html(data);
-          }
-        });
+        refreshMyDrains();
       }
     });
     return false;
@@ -689,20 +692,9 @@ $(function() {
           $(submitButton).attr("disabled", false);
         },
         success: function(data) {
-          $.ajax({
-            type: 'GET',
-            url: '/info_window',
-            data: {
-              'thing_id': activeThingId
-            },
-            success: function(data) {
-              activeInfoWindow.close();
-              activeInfoWindow.setContent(data);
-              activeInfoWindow.open(map, activeMarker);
-              activeMarker.setIcon(toSewerMarker);
-              activeMarker.setAnimation(null);
-            }
-          });
+          refreshInfoWindow();
+          refreshMyDrains();
+          activeMarker.setIcon(toSewerMarker);
         }
       });
     }
