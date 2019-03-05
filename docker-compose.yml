@@ -4,7 +4,7 @@ services:
   db:
     image: library/postgres:9.6
     ports:
-      - "5959:5432"
+      - "5432:5432"
     volumes:
       - "~/data_cl_aad/pgdata:/var/lib/postgresql/data"
 
@@ -37,4 +37,4 @@ services:
     depends_on:
       - db
 # Run the tests
-#   docker-compose run web bundle exec rake test      
+#   docker-compose run web bundle exec rake test
