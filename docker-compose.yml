@@ -1,10 +1,11 @@
+fred
 version: '3'
 # docker-compose up
 services:
   db:
     image: library/postgres:9.6
     ports:
-      - "5959:5432"
+      - "5432:5432"
     volumes:
       - "~/data_cl_aad/pgdata:/var/lib/postgresql/data"
 
