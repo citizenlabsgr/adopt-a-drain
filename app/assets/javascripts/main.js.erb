@@ -864,9 +864,14 @@ $(function() {
             $('#content').html(data);
           }
         });
-        refreshInfoWindow();
-      }
-    });
+      },
+    }).done(function() {
+      // refreshInfoWindow(); This is unneeded because of the window refresh below
+      // This is a hack to get around the Rails token being invalid.
+      // Maybe a Ruby expert could fix the actual problem
+      window.location.reload(false); 
+     })
+    ;
     return false;
   });
   $('.sidebar').on('submit','#sign_out_form', function() {
