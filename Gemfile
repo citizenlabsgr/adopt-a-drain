@@ -37,6 +37,10 @@ group :development do
   gem 'spring'
 end
 
+group :development, :test do
+  gem 'pry-byebug'
+end
+
 group :production do
   gem 'puma'
   gem 'rails_12factor'
@@ -48,4 +52,6 @@ group :test do
   gem 'rubocop'
   gem 'simplecov', require: false
   gem 'webmock'
+  gem 'rspec-rails'
+  gem 'capybara'
 end
