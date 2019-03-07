@@ -1,12 +1,10 @@
 require 'rails_helper'
 
-RSpec.feature "Sign Up", type: :feature do
+RSpec.feature "Sign Up", type: :feature, js: true do
   it 'can be signed up on' do
     visit '/'
     click_on 'Register / Sign in'
     fill_in 'user_email', with: 'test@example.com'
-
-    save_and_open_page
 
     choose "I haven't signed up yet"
 
