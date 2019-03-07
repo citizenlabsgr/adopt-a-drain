@@ -38,7 +38,7 @@ $(function() {
       handleNoGeolocation(browserSupportFlag);
     });
   }
-  // Browser doesn't support Geolocation
+  // Browser does not support Geolocation
   else {
     browserSupportFlag = false;
     handleNoGeolocation(browserSupportFlag);
@@ -271,6 +271,37 @@ $(function() {
       }
     }
   }
+  /* Ajax call to reopen the 'right' info window for the current state */
+  function refreshInfoWindow() {
+    if (activeThingId == null 
+      || activeThingId === null 
+      || activeThingId === undefined) {
+
+    } else {
+      $.ajax({
+        type: 'GET',
+        url: '/info_window',
+        data: {
+          'thing_id': activeThingId
+        },
+        success: function(data) {
+          activeInfoWindow.close();
+          activeInfoWindow.setContent(data);
+          activeInfoWindow.open(map, activeMarker);
+        }
+      });
+    }
+  }
+  /* Ajax call to refresh the list of 'My Drains' in the sidebar */
+  function refreshMyDrains() {
+      $.ajax({
+        type: 'GET',
+        url: '/sidebar/search',
+        success: function(data) {
+          $('#content').html(data);
+        }
+      });
+    }
   function showFlash(type, message) {
     $('#content').prepend(
         $('<div></div>').addClass('alert fade in alert-' + type).data('alert', '').append(
@@ -518,6 +549,7 @@ $(function() {
                 $('.sidebar').addClass('signed-in');
                 $('.sidebar').removeClass('sidebar-full');
                 $('#content').html(data);
+                refreshInfoWindow();
               }
             });
           }
@@ -563,6 +595,7 @@ $(function() {
                 $('#content').html(data);
                 current_user_id = $('#current_user_id').val();
                 flipMarkers();
+                refreshInfoWindow();
               }
             });
           }
@@ -632,6 +665,7 @@ $(function() {
             setTimeout(function(){ activeMarker.setAnimation(null); }, 2800);
           }
         });
+        refreshMyDrains();
       }
     });
     return false;
@@ -658,20 +692,9 @@ $(function() {
           $(submitButton).attr("disabled", false);
         },
         success: function(data) {
-          $.ajax({
-            type: 'GET',
-            url: '/info_window',
-            data: {
-              'thing_id': activeThingId
-            },
-            success: function(data) {
-              activeInfoWindow.close();
-              activeInfoWindow.setContent(data);
-              activeInfoWindow.open(map, activeMarker);
-              activeMarker.setIcon(toSewerMarker);
-              activeMarker.setAnimation(null);
-            }
-          });
+          refreshInfoWindow();
+          refreshMyDrains();
+          activeMarker.setIcon(toSewerMarker);
         }
       });
     }
@@ -841,8 +864,14 @@ $(function() {
             $('#content').html(data);
           }
         });
-      }
-    });
+      },
+    }).done(function() {
+      // refreshInfoWindow(); This is unneeded because of the window refresh below
+      // This is a hack to get around the Rails token being invalid.
+      // Maybe a Ruby expert could fix the actual problem
+      window.location.reload(false); 
+     })
+    ;
     return false;
   });
   $('.sidebar').on('submit','#sign_out_form', function() {
@@ -855,9 +884,7 @@ $(function() {
         $(submitButton).attr("disabled", false);
       },
       success: function(data) {
-        activeInfoWindow.close();
-        activeInfoWindow.setContent(data);
-        activeInfoWindow.open(map, activeMarker);
+        refreshInfoWindow();
       }
     });
     return false;
