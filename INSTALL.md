@@ -106,6 +106,7 @@ At this point, a Developer should be good to start jamming on issues [here](http
     docker-compose up      # make the application ready to accept connections    
 
     docker-compose run web bundle exec rake test   # Run tests
+    docker-compose run web bundle exec rspec spec   # Run specs
     
 ```
 

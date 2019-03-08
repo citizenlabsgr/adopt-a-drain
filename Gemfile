@@ -4,8 +4,6 @@ ruby '2.5.3'
 gem 'airbrake', '~> 7.1'
 gem 'bundler-audit', '~> 0.6'
 gem 'concurrent-ruby', '>= 1.1.3'
-# gem 'devise', '~> 3.0'
-# gem 'devise', '~> 4.4.0'
 gem 'devise', '~> 4.4'
 gem 'geokit', '~> 1.0'
 gem 'haml', '~> 5.0'
@@ -37,6 +35,10 @@ group :development do
   gem 'spring'
 end
 
+group :development, :test do
+  gem 'pry-byebug'
+end
+
 group :production do
   gem 'puma'
   gem 'rails_12factor'
@@ -48,4 +50,8 @@ group :test do
   gem 'rubocop'
   gem 'simplecov', require: false
   gem 'webmock'
+  gem 'rspec-rails'
+  gem 'capybara'
+  gem 'selenium-webdriver'
+  gem 'chromedriver-helper'
 end

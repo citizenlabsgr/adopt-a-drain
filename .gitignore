@@ -40,3 +40,5 @@ public/assets
 
 # Ignore MacOS file changes
 *.DS_Store
+
+/spec/examples.txt
