@@ -4,6 +4,7 @@ rvm:
 
 addons:
   postgresql: "9.6"
+  chrome: stable
 
 cache: bundler
 
@@ -14,6 +15,7 @@ before_script: bundle exec rake db:create db:schema:load
 script:
 - bundle exec bundle audit check --update
 - bundle exec rake test
+- bundle exec rspec spec
 # - bundle exec rubocop # TODO: make codebase rubocop compliant
 
 notifications:
