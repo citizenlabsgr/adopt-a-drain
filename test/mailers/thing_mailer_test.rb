@@ -24,6 +24,7 @@ class ThingMailerTest < ActionMailer::TestCase
     assert(File.exists?("#{Rails.root.to_s + '/app/assets/images/icons/facebook.png'}"))
     assert(File.exists?("#{Rails.root.to_s + '/app/assets/images/icons/twitter.png'}"))
     assert(File.exists?("#{Rails.root.to_s + '/app/assets/images/icons/instagram.png'}"))
+    assert(File.exists?("#{Rails.root.to_s + '/app/assets/images/logos/drain-cleaner.png'}"))
 
     email = ThingMailer.first_adoption_confirmation(@thing)
     assert_nothing_raised { email.message }
@@ -31,7 +32,8 @@ class ThingMailerTest < ActionMailer::TestCase
     assert_equal ["image/png; filename=adopt-a-drain.png",
                     "image/png; filename=facebook.png",
                     "image/png; filename=twitter.png",
-                    "image/png; filename=instagram.png"],
+                    "image/png; filename=instagram.png",
+                    "image/png; filename=drain-cleaner.png"],
                 email.attachments.inline.map { |a| a["Content-Type"].to_s }
   end
 
@@ -46,6 +48,7 @@ class ThingMailerTest < ActionMailer::TestCase
     assert_equal ['hello@citizenlabs.org'], email.from
     assert_equal ['erik@example.com'], email.to
     assert_equal 'Thanks for adopting another drain, Erik!', email.subject
+
   end
 
   test "second_adopted_confirmation inline attachments" do
@@ -57,6 +60,7 @@ class ThingMailerTest < ActionMailer::TestCase
     assert(File.exists?("#{Rails.root.to_s + '/app/assets/images/icons/facebook.png'}"))
     assert(File.exists?("#{Rails.root.to_s + '/app/assets/images/icons/twitter.png'}"))
     assert(File.exists?("#{Rails.root.to_s + '/app/assets/images/icons/instagram.png'}"))
+    assert(File.exists?("#{Rails.root.to_s + '/app/assets/images/logos/drain-cleaner.png'}"))
 
     email = ThingMailer.second_adoption_confirmation(@thing)
     assert_nothing_raised { email.message }
@@ -64,7 +68,8 @@ class ThingMailerTest < ActionMailer::TestCase
     assert_equal ["image/png; filename=adopt-a-drain.png",
                     "image/png; filename=facebook.png",
                     "image/png; filename=twitter.png",
-                    "image/png; filename=instagram.png"],
+                    "image/png; filename=instagram.png",
+                    "image/png; filename=drain-cleaner.png"],
                 email.attachments.inline.map { |a| a["Content-Type"].to_s }
   end
 

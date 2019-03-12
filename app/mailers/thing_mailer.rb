@@ -7,6 +7,7 @@ class ThingMailer < ApplicationMailer
     attachments.inline['facebook.png'] = File.read("#{Rails.root.to_s + '/app/assets/images/icons/facebook.png'}")
     attachments.inline['twitter.png'] = File.read("#{Rails.root.to_s + '/app/assets/images/icons/twitter.png'}")
     attachments.inline['instagram.png'] = File.read("#{Rails.root.to_s + '/app/assets/images/icons/instagram.png'}")
+    attachments.inline['drain-cleaner.png'] = File.read("#{Rails.root.to_s + '/app/assets/images/logos/drain-cleaner.png'}")
 
     mail(to: @user.email, subject: ["Thanks for adopting a drain, #{@user.name.split.first}!"])
   end
@@ -19,6 +20,7 @@ class ThingMailer < ApplicationMailer
     attachments.inline['facebook.png'] = File.read("#{Rails.root.to_s + '/app/assets/images/icons/facebook.png'}")
     attachments.inline['twitter.png'] = File.read("#{Rails.root.to_s + '/app/assets/images/icons/twitter.png'}")
     attachments.inline['instagram.png'] = File.read("#{Rails.root.to_s + '/app/assets/images/icons/instagram.png'}")
+    attachments.inline['drain-cleaner.png'] = File.read("#{Rails.root.to_s + '/app/assets/images/logos/drain-cleaner.png'}")
 
     mail(to: @user.email, subject: ["Thanks for adopting another drain, #{@user.name.split.first}!"])
   end
