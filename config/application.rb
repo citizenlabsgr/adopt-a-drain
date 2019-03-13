@@ -26,6 +26,6 @@ module AdoptAThing
     # https://devcenter.heroku.com/articles/rails-4-asset-pipeline#serve-assets
 
     config.serve_static_files = true
-    
+
   end
 end

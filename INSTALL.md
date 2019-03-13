@@ -7,14 +7,14 @@
 ### Developers
 
 * Install [Docker](https://www.docker.com/get-started) and [Docker-Compose](https://docs.docker.com/compose/install/) on your development box
-* A Developer needs a [data.world](https://data.world) account to get an API token 
+* A Developer needs a [data.world](https://data.world) account to get an API token
 * A Developer needs a  [github](https://github.com) account
-* A Developer needs a [google map api key](https://developers.google.com/maps/documentation/javascript/get-api-key). If you are a permanent Citizen Labs developer, talk to the team about sharing a key. The personal api key process will require a credit card to prove you're not a robot. 
+* A Developer needs a [google map api key](https://developers.google.com/maps/documentation/javascript/get-api-key). If you are a permanent Citizen Labs developer, talk to the team about sharing a key. The personal api key process will require a credit card to prove you're not a robot.
 
 ### Production
 * Adopt a Drain requires [Postgres](http://www.postgresql.org/) to be installed.
 * We also recommend using a ruby version manager such as [rbenv](https://github.com/rbenv/rbenv).
-* An Administrator needs a [data.world](https://data.world) account to get an API token 
+* An Administrator needs a [data.world](https://data.world) account to get an API token
 * An Administrator needs a  [github](https://github.com) account
 * An Administrator needs a [google map](https://cloud.google.com/maps-platform/) account
 
@@ -27,10 +27,10 @@ On your local machine, open a Terminal window
     cd adopt-a-drain
 ```
 
-#### Get a Google API key 
+#### Get a Google API key
 
 
-#### Add an Environment Variables (.env)
+#### Add Development Environment Variables (.env)
 Put `.env` in the adopt-a-drain folder of the cloned repo
 ```
     # Postgres db variables:
@@ -44,11 +44,17 @@ Put `.env` in the adopt-a-drain folder of the cloned repo
     DW_USER=citizenlabs
 
     # Enable data.world data with your "read/write" api token
-    DW_AUTH_TOKEN=<get-data.world-api-token> 
+    DW_AUTH_TOKEN=<get-data.world-api-token>
 
     # URL for drain data
     OPEN_SOURCE=https://api.data.world/v0/sql/citizenlabs/grb-storm-drains
+
+    # Turn on Google SMTP server
+    GMAIL_ADDRESS=<your-gmail-email-address>
+    GMAIL_PASSWORD=<your-gmail-password>
 ```
+
+
 * Creating a file (`.env`) to hold these variables will be more convenient for you. Put `.env` in the repo clone's `adopt-a-drain/` folder.
 * An Administrator will need to configure environment variables in Heroku.
 
@@ -57,12 +63,12 @@ Put `.env` in the adopt-a-drain folder of the cloned repo
 
 
 #### Build Adopt a Drain with Compose
-Build caches steps to make docker-compose run faster 
+Build caches steps to make docker-compose run faster
 Open a Terminal Window
 Run the following if you change the Dockerfile, Docker-composer, GEMFILE or GEMLOCK.lock
 ```
                            # Open a command window
-    docker system prune    # Remove all unused containers, networks, images (both dangling and unreferenced) 
+    docker system prune    # Remove all unused containers, networks, images (both dangling and unreferenced)
 
     cd adopt-a-drain/      # you should be in the adopt-a-drain/ folder
 
@@ -87,7 +93,7 @@ Make sure Adopt-a-drain is accepting connections.
 # Visit your website http://localhost:3000 (or the IP of your docker-machine)
 ```
 
-#### What just happened? 
+#### What just happened?
 * Sofware Install: The docker-compose command installed all the software necessary to run the Adopt-a-Drain application. The biggies are Postgres and Ruby on Rails.   
 * Database Install: Docker-compose created data tables in Postgres, e.g,  "things", "users", "reminders" tables.
 * Data Install: Docker-compose calls rails tasks to load drain data into the things table.
@@ -97,7 +103,7 @@ Make sure Adopt-a-drain is accepting connections.
 At this point, a Developer should be good to start jamming on issues [here](https://github.com/citizenlabsgr/adopt-a-drain/issues).
 
 ## Testing
-* Start the Docker containers 
+* Start the Docker containers
 * Make sure http://localhost:3000 is accepting connections
 ```
                            # Open a command window
@@ -107,7 +113,7 @@ At this point, a Developer should be good to start jamming on issues [here](http
 
     docker-compose run web bundle exec rake test   # Run tests
     docker-compose run web bundle exec rspec spec   # Run specs
-    
+
 ```
 
 

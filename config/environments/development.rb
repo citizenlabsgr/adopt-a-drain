@@ -70,4 +70,19 @@ Rails.application.configure do
   # For Mailcatcher
   config.action_mailer.delivery_method = :smtp
   # config.action_mailer.smtp_settings = {address: 'localhost', port: 1025}
+
+  #puts ENV['GMAIL_ADDRESS']? and ENV['GMAIL_PASSWORD']?
+
+  if ENV['GMAIL_ADDRESS'] and ENV['GMAIL_PASSWORD']
+    puts 'gmail is configured'
+    config.action_mailer.smtp_settings = {
+      address:              'smtp.gmail.com',
+      port:                 587,
+      domain:               'example.com',
+      user_name:            ENV['GMAIL_ADDRESS'],
+      password:             ENV['GMAIL_PASSWORD'],
+      authentication:       'plain',
+      enable_starttls_auto: true }
+  end
+
 end
