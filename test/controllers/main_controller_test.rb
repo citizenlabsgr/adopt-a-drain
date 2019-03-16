@@ -24,7 +24,7 @@ class MainControllerTest < ActionController::TestCase
     end
     assert_select 'label#city_state_label', 'City'
     assert_select 'select#city_state' do
-      assert_select 'option', 'San Francisco, California'
+      assert_select 'option', 'Grand Rapids, Michigan'
     end
     assert_select 'input#address', true
     assert_select 'input[name="commit"]' do
