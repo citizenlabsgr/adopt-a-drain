@@ -3,7 +3,8 @@ require 'test_helper'
 class ThingsControllerTest < ActionController::TestCase
   include Devise::Test::ControllerHelpers
   setup do
-    stub_request(:get, 'https://maps.google.com/maps/api/geocode/json').
+    geocode_url = 'https://maps.googleapis.com/maps/api/geocode/json'
+    stub_request(:get, geocode_url).
       with(query: {latlng: '42.383339,-71.049226', sensor: 'false'}).
       to_return(body: File.read(File.expand_path('../../fixtures/city_hall.json', __FILE__)))
 
