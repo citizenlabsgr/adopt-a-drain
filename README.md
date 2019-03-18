@@ -42,7 +42,7 @@ Here are some ways *you* can contribute:
 * by writing code (**no patch is too small**: fix typos, add comments, clean up
   inconsistent whitespace)
 * by refactoring code
-* by closing [issues][https://github.com/citizenlabsgr/adopt-a-drain/issues]
+* by closing [issues](#submitting-an-issue)
 * by reviewing patches
 * [financially][]
 
@@ -51,7 +51,7 @@ Here are some ways *you* can contribute:
 [![Waffle.io - Columns and their card count](https://badge.waffle.io/citizenlabsgr/adopt-a-drain.png?columns=all)](https://waffle.io/citizenlabsgr/adopt-a-drain?utm_source=badge)
 
 ## Submitting an Issue
-We use the [GitHub issue tracker][https://github.com/citizenlabsgr/adopt-a-drain/issues] and [Waffle](https://waffle.io/citizenlabsgr/adopt-a-drain) to track bugs and features. Before submitting a bug report or feature request, check to make sure it hasn't
+We use the [GitHub issue tracker](https://github.com/citizenlabsgr/adopt-a-drain/issues) and [Waffle](https://waffle.io/citizenlabsgr/adopt-a-drain) to track bugs and features. Before submitting a bug report or feature request, check to make sure it hasn't
 already been submitted. When submitting a bug report, please include a [Gist][]
 that includes a stack trace and any details that may be necessary to reproduce
 the bug, including your gem version, Ruby version, and operating system.
