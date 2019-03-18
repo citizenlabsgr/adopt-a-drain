@@ -10,8 +10,9 @@ class RemindersControllerTest < ActionController::TestCase
     @admin = users(:admin)
     @thing.user = @dan
     @thing.save!
-    stub_request(:get, 'https://maps.google.com/maps/api/geocode/json').
-      with(query: {latlng: '42.383339,-71.049226', sensor: 'false'}).
+    geocode_url = 'https://maps.googleapis.com/maps/api/geocode/json'
+    stub_request(:get, geocode_url).
+      with(query: {latlng: '42.383339,-71.049226', key: ENV["GOOGLE_MAPS_JAVASCRIPT_API_KEY"], sensor: 'false'}).
       to_return(body: File.read(File.expand_path('../../fixtures/city_hall.json', __FILE__)))
   end
 
