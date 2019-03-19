@@ -273,8 +273,8 @@ $(function() {
   }
   /* Ajax call to reopen the 'right' info window for the current state */
   function refreshInfoWindow() {
-    if (activeThingId == null 
-      || activeThingId === null 
+    if (activeThingId == null
+      || activeThingId === null
       || activeThingId === undefined) {
 
     } else {
@@ -371,7 +371,7 @@ $(function() {
     }
     return false;
   });
-
+  // ADDRESS FORM
   $('body').on('submit', '#address_form', function() {
     var submitButton = $("#address_form input[type='submit']");
     $(submitButton).attr("disabled", true);
@@ -458,6 +458,7 @@ $(function() {
       });
     }
   });
+  // NEW ACCOUNT or LOGIN FORM
   $('.sidebar').on('submit','#combo-form', function() {
     var submitButton = $("#combo-form input[type='submit']");
     $(submitButton).attr("disabled", true);
@@ -630,6 +631,7 @@ $(function() {
     }
     return false;
   });
+  // ADOPT FROM MAP
   $('#map').on('submit', '#adoption_form', function() {
     var submitButton = $("#adoption_form input[type='submit']");
     $(submitButton).attr("disabled", true);
@@ -643,7 +645,8 @@ $(function() {
         'authenticity_token': $('#adoption_form input[name="authenticity_token"]').val(),
         'thing': {
           'user_id': $('#thing_user_id').val(),
-          'adopted_name': $('#thing_adopted_name').val()
+          'adopted_name': $('#thing_adopted_name').val(),
+          'date_adopted': (new Date()).toString()
         }
       },
       error: function(jqXHR) {
@@ -869,7 +872,7 @@ $(function() {
       // refreshInfoWindow(); This is unneeded because of the window refresh below
       // This is a hack to get around the Rails token being invalid.
       // Maybe a Ruby expert could fix the actual problem
-      window.location.reload(false); 
+      window.location.reload(false);
      })
     ;
     return false;

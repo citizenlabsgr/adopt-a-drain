@@ -53,8 +53,10 @@ class ThingsControllerTest < ActionController::TestCase
   end
 
   test 'should update drain and send an adopted confirmation email' do
+    puts 'update drain and send an adopted confirmation emai'
     sign_in @user
     num_deliveries = ActionMailer::Base.deliveries.size
+    
     put :update, format: 'json', id: @thing.id, thing: {adopted_name: 'Drain', user_id: @user.id}
     assert @thing.reload.adopted?
     assert_equal num_deliveries + 1, ActionMailer::Base.deliveries.size

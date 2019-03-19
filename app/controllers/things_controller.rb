@@ -11,6 +11,9 @@ class ThingsController < ApplicationController
   end
 
   def update
+    puts "update 1"
+    puts "params"
+    puts params
     @thing = Thing.find(params[:id])
     if @thing.update_attributes(thing_params)
       send_adoption_email(@thing.user, @thing) if @thing.adopted?
