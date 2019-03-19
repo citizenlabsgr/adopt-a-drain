@@ -14,6 +14,9 @@ de:
     sign_in: "Einloggen"
     sign_out: "Ausloggen"
     sign_up: "Registrieren"
+    signup_form: "Aanmelden"
+    login_form: "Aanmelden"
+    forgot_password: "Wachtwoord vergeten"
     update: "Aktualisierung"
   captions:
     optional: "(optional)"
