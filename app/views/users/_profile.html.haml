@@ -1,0 +1,8 @@
+-# Note that this layout is used in adopt.html.haml as well 
+%h4
+  = t("titles.adopted", :thing_name => @thing.display_name != "" ? @thing.display_name.titleize : t("defaults.this_thing", :thing => t("defaults.thing")))
+%div
+  = t("titles.byline", :name => @thing.user.name)
+  = t("titles.ofline", :organization => @thing.user.organization) unless @thing.user.organization.blank?
+%br
+= render :partial => 'things/jurisdiction'
