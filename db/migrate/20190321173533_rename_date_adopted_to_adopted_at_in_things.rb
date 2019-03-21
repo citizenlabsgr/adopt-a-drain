@@ -1,6 +1,5 @@
 class RenameDateAdoptedToAdoptedAtInThings < ActiveRecord::Migration
-  def change
-    def up
+  def up
     rename_column :things, :date_adopted, :adopted_at
   end
 
