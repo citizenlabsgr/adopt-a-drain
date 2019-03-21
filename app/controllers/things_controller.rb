@@ -39,6 +39,6 @@ private
   end
 
   def thing_params
-    params.require(:thing).permit(:adopted_name, :user_id, :date_adopted)
+    params.require(:thing).permit(:adopted_name, :user_id, :adopted_at)
   end
 end

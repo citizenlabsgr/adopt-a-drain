@@ -58,7 +58,7 @@ class ThingsControllerTest < ActionController::TestCase
     num_deliveries = ActionMailer::Base.deliveries.size
 
     time_str = Time.now.to_formatted_s(:db)
-    put :update, format: 'json', id: @thing.id, thing: {adopted_name: 'Drain', user_id: @user.id, date_adopted: time_str}
+    put :update, format: 'json', id: @thing.id, thing: {adopted_name: 'Drain', user_id: @user.id, adopted_at: time_str}
 
     assert @thing.reload.adopted?
     assert_equal num_deliveries + 1, ActionMailer::Base.deliveries.size
@@ -74,7 +74,7 @@ class ThingsControllerTest < ActionController::TestCase
     @user.things = [things(:thing_2)]
 
     time_str = Time.now.to_formatted_s(:db)
-    put :update, format: 'json', id: @thing.id, thing: {adopted_name: 'Drain', user_id: @user.id, date_adopted: time_str }
+    put :update, format: 'json', id: @thing.id, thing: {adopted_name: 'Drain', user_id: @user.id, adopted_at: time_str }
 
     assert @thing.reload.adopted?
     assert_response :success
@@ -87,7 +87,7 @@ class ThingsControllerTest < ActionController::TestCase
   test 'should update drain but not send an adopted confirmation email upon abandonment' do
     sign_in @user
     num_deliveries = ActionMailer::Base.deliveries.size
-    put :update, format: 'json', id: @thing.id, thing: {adopted_name: 'Another Drain', user_id: nil, date_adopted: nil } # a nil user_id is an abandonment
+    put :update, format: 'json', id: @thing.id, thing: {adopted_name: 'Another Drain', user_id: nil, adopted_at: nil } # a nil user_id is an abandonment
 
     assert_not @thing.reload.adopted?
     assert_equal num_deliveries, ActionMailer::Base.deliveries.size
