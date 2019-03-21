@@ -9,7 +9,7 @@ development: &DEVELOPMENT
 # Do not set this db to the same as development or production.
 test:
   <<: *DEVELOPMENT
-  database: adopt_a_thing_test 
+  database: adopt_a_thing_test
 
 staging: # read from DATABASE_URL
   adapter: postgresql

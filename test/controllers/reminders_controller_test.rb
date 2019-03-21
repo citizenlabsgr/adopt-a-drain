@@ -9,6 +9,7 @@ class RemindersControllerTest < ActionController::TestCase
     @user = users(:erik)
     @admin = users(:admin)
     @thing.user = @dan
+    @thing.date_adopted = Time.now.to_formatted_s(:db)
     @thing.save!
     geocode_url = 'https://maps.googleapis.com/maps/api/geocode/json'
     stub_request(:get, geocode_url).

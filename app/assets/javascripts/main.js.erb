@@ -177,7 +177,7 @@ $(function() {
       open info window
     */
     google.maps.event.addListener(marker, 'click', function() {
-      console.log(marker);
+
       if(activeInfoWindow) {
         activeInfoWindow.close();
       }
@@ -197,7 +197,7 @@ $(function() {
           'thing_id': thingId
         },
         success: function(data) {
-          console.log(data)
+
           // Prevent race condition, which could lead to multiple windows being open at the same time.
           if(infoWindow === activeInfoWindow) {
             infoWindow.setContent(data); // set content of info window
@@ -273,8 +273,9 @@ $(function() {
   }
   /* Ajax call to reopen the 'right' info window for the current state */
   function refreshInfoWindow() {
-    if (activeThingId == null 
-      || activeThingId === null 
+
+    if (activeThingId == null
+      || activeThingId === null
       || activeThingId === undefined) {
 
     } else {
@@ -288,6 +289,7 @@ $(function() {
           activeInfoWindow.close();
           activeInfoWindow.setContent(data);
           activeInfoWindow.open(map, activeMarker);
+
         }
       });
     }
@@ -371,7 +373,7 @@ $(function() {
     }
     return false;
   });
-
+  // ADDRESS FORM
   $('body').on('submit', '#address_form', function() {
     var submitButton = $("#address_form input[type='submit']");
     $(submitButton).attr("disabled", true);
@@ -458,6 +460,7 @@ $(function() {
       });
     }
   });
+  // NEW ACCOUNT or LOGIN FORM
   $('.sidebar').on('submit','#combo-form', function() {
     var submitButton = $("#combo-form input[type='submit']");
     $(submitButton).attr("disabled", true);
@@ -630,6 +633,7 @@ $(function() {
     }
     return false;
   });
+  // ADOPT FROM MAP
   $('#map').on('submit', '#adoption_form', function() {
     var submitButton = $("#adoption_form input[type='submit']");
     $(submitButton).attr("disabled", true);
@@ -643,7 +647,8 @@ $(function() {
         'authenticity_token': $('#adoption_form input[name="authenticity_token"]').val(),
         'thing': {
           'user_id': $('#thing_user_id').val(),
-          'adopted_name': $('#thing_adopted_name').val()
+          'adopted_name': $('#thing_adopted_name').val(),
+          'date_adopted': (new Date()).toString()
         }
       },
       error: function(jqXHR) {
@@ -657,12 +662,19 @@ $(function() {
             'thing_id': activeThingId
           },
           success: function(data) {
+
             activeInfoWindow.close();
+
             activeInfoWindow.setContent(data);
+
             activeInfoWindow.open(map, activeMarker);
+
             activeMarker.setIcon(adoptedByYouMarker);
+
             activeMarker.setAnimation(google.maps.Animation.BOUNCE);
+
             setTimeout(function(){ activeMarker.setAnimation(null); }, 2800);
+
           }
         });
         refreshMyDrains();
@@ -685,7 +697,8 @@ $(function() {
           'authenticity_token': $('#abandon_form input[name="authenticity_token"]').val(),
           'thing': {
             'user_id': $('#thing_user_id').val(),
-            'adopted_name': $('#thing_adopted_name').val()
+            'adopted_name': $('#thing_adopted_name').val(),
+            'date_adopted': (new Date()).toString()
           }
         },
         error: function(jqXHR) {
@@ -869,7 +882,7 @@ $(function() {
       // refreshInfoWindow(); This is unneeded because of the window refresh below
       // This is a hack to get around the Rails token being invalid.
       // Maybe a Ruby expert could fix the actual problem
-      window.location.reload(false); 
+      window.location.reload(false);
      })
     ;
     return false;
@@ -899,7 +912,7 @@ $(function() {
         $(link).removeClass('disabled');
       },
       success: function(data) {
-        console.log(data);
+
         $('#content').html(data);
       }
     });
