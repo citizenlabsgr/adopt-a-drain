@@ -71,10 +71,8 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   # config.action_mailer.smtp_settings = {address: 'localhost', port: 1025}
 
-  #puts ENV['GMAIL_ADDRESS']? and ENV['GMAIL_PASSWORD']?
-
   if ENV['GMAIL_ADDRESS'] and ENV['GMAIL_PASSWORD']
-    puts 'gmail is configured'
+    
     config.action_mailer.smtp_settings = {
       address:              'smtp.gmail.com',
       port:                 587,

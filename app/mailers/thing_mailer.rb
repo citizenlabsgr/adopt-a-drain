@@ -1,5 +1,6 @@
 class ThingMailer < ApplicationMailer
   def first_adoption_confirmation(thing)
+
     @thing = thing
     @user = thing.user
 
@@ -10,9 +11,11 @@ class ThingMailer < ApplicationMailer
     attachments.inline['drain-cleaner.png'] = File.read("#{Rails.root.to_s + '/app/assets/images/logos/drain-cleaner.png'}")
 
     mail(to: @user.email, subject: ["Thanks for adopting a drain, #{@user.name.split.first}!"])
+
   end
 
   def second_adoption_confirmation(thing)
+
     @thing = thing
     @user = thing.user
 
@@ -23,6 +26,7 @@ class ThingMailer < ApplicationMailer
     attachments.inline['drain-cleaner.png'] = File.read("#{Rails.root.to_s + '/app/assets/images/logos/drain-cleaner.png'}")
 
     mail(to: @user.email, subject: ["Thanks for adopting another drain, #{@user.name.split.first}!"])
+    
   end
 
   # This email is unused at this time

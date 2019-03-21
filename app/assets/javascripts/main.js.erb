@@ -177,7 +177,7 @@ $(function() {
       open info window
     */
     google.maps.event.addListener(marker, 'click', function() {
-      console.log(marker);
+
       if(activeInfoWindow) {
         activeInfoWindow.close();
       }
@@ -197,7 +197,7 @@ $(function() {
           'thing_id': thingId
         },
         success: function(data) {
-          console.log(data)
+
           // Prevent race condition, which could lead to multiple windows being open at the same time.
           if(infoWindow === activeInfoWindow) {
             infoWindow.setContent(data); // set content of info window
@@ -273,6 +273,7 @@ $(function() {
   }
   /* Ajax call to reopen the 'right' info window for the current state */
   function refreshInfoWindow() {
+
     if (activeThingId == null
       || activeThingId === null
       || activeThingId === undefined) {
@@ -288,6 +289,7 @@ $(function() {
           activeInfoWindow.close();
           activeInfoWindow.setContent(data);
           activeInfoWindow.open(map, activeMarker);
+
         }
       });
     }
@@ -660,12 +662,19 @@ $(function() {
             'thing_id': activeThingId
           },
           success: function(data) {
+
             activeInfoWindow.close();
+
             activeInfoWindow.setContent(data);
+
             activeInfoWindow.open(map, activeMarker);
+
             activeMarker.setIcon(adoptedByYouMarker);
+
             activeMarker.setAnimation(google.maps.Animation.BOUNCE);
+
             setTimeout(function(){ activeMarker.setAnimation(null); }, 2800);
+
           }
         });
         refreshMyDrains();
@@ -688,7 +697,8 @@ $(function() {
           'authenticity_token': $('#abandon_form input[name="authenticity_token"]').val(),
           'thing': {
             'user_id': $('#thing_user_id').val(),
-            'adopted_name': $('#thing_adopted_name').val()
+            'adopted_name': $('#thing_adopted_name').val(),
+            'date_adopted': (new Date()).toString()
           }
         },
         error: function(jqXHR) {
@@ -902,7 +912,7 @@ $(function() {
         $(link).removeClass('disabled');
       },
       success: function(data) {
-        console.log(data);
+
         $('#content').html(data);
       }
     });
