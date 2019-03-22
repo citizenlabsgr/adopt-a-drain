@@ -1,6 +1,6 @@
 echo 'Starting data process'
-bundle update;
-bundle update rake;
+# bundle update;
+# bundle update rake;
 bundle exec rake db:create;
 bundle exec rake db:schema:load;
 bundle exec rake db:migrate;
