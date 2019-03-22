@@ -18,9 +18,14 @@ services:
           echo 'sleep';
           sleep 1;
         done;
-      ./release-tasks.sh  
-      echo 'Port open! Moved data load to Procfile'
 
+      echo 'Port open! Moved data load to Procfile'
+      bundle update;
+      bundle update rake;
+      bundle exec rake db:create;
+      bundle exec rake db:schema:load;
+      bundle exec rake db:migrate;
+      bundle exec rake data:load_things;
       echo 'DONE with Data...ready to launch, http://localhost:3000';
       bundle exec rails s -p 3000 -b '0.0.0.0'
       "
