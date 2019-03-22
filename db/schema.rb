@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190319120408) do
+ActiveRecord::Schema.define(version: 20190321173533) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 20190319120408) do
     t.datetime "deleted_at"
     t.string   "adopted_name"
     t.string   "jurisdiction"
-    t.datetime "date_adopted"
+    t.datetime "adopted_at"
   end
 
   add_index "things", ["city_id"], name: "index_things_on_city_id", unique: true, using: :btree

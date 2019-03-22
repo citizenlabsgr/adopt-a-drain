@@ -11,7 +11,7 @@ class InfoWindowControllerTest < ActionController::TestCase
   test 'should thank the user if the drain is adopted by the user' do
     sign_in @user
     @thing.user_id = @user.id
-    @thing.date_adopted = Time.now.to_formatted_s(:db)
+    @thing.adopted_at = Time.now.to_formatted_s(:db)
     @thing.save!
     get :index, thing_id: @thing.id
     assert_not_nil assigns :thing
