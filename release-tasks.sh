@@ -1,3 +1,4 @@
+#!/bin/bash
 echo 'Starting data process'
 # bundle update;
 # bundle update rake;
