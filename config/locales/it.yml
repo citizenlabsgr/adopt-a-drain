@@ -15,6 +15,9 @@ it:
     sign_out: "Esci"
     sign_up: "Iscriviti"
     update: "Aggiorna"
+    signup_form: "Registrati"
+    login_form: "Accedi"
+    forgot_password: "Password dimenticata"
   captions:
     optional: "(opzionale)"
     private: "(privato)"
