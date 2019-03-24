@@ -714,6 +714,7 @@ $(function() {
     return false;
   });
   $('.sidebar').on('click','#edit_profile_link', function() {
+
     var link = $(this);
     $(link).addClass('disabled');
     $.ajax({
@@ -729,6 +730,7 @@ $(function() {
     return false;
   });
   $('.sidebar').on('submit','#edit_form', function() {
+
     var submitButton = $("#edit_form input[type='submit']");
     $(submitButton).attr("disabled", true);
     var errors = []
@@ -744,12 +746,14 @@ $(function() {
     } else {
       $('#user_first_name').parent().removeClass(errorClass);
     }
+    /*
     if($('#user_zip').val() != '' && !/^\d{5}(-\d{4})?$/.test($('#user_zip').val())) {
       errors.push($('#user_zip'));
       $('#user_zip').parent().addClass(errorClass);
     } else {
       $('#user_zip').parent().removeClass(errorClass);
     }
+    */
     if($('#user_password').val() && ($('#user_password').val().length < 6 || $('#user_password').val().length > 20)) {
       errors.push($('#user_password'));
       $('#user_password').parent().addClass(errorClass);
@@ -766,6 +770,7 @@ $(function() {
       $(submitButton).attr("disabled", false);
       errors[0].focus();
     } else {
+      
       $.ajax({
         type: 'POST',
         url: '/users.json',
