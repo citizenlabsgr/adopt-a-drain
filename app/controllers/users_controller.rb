@@ -4,6 +4,7 @@ class UsersController < Devise::RegistrationsController
   end
 
   def update
+
     self.resource = resource_class.to_adapter.get!(send(:"current_#{resource_name}").to_key)
     if update_resource(resource, account_update_params)
       yield resource if block_given?

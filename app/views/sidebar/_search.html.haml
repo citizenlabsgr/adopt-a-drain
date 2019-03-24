@@ -16,9 +16,5 @@
   %a{:href => destroy_user_session_path, :id => "sign_out_link", :class => "btn btn-danger btn-block"}
     = t("buttons.sign_out")
 - else
-  %a{:href => combo_form_path(form: 'signup_form'), :class => "link btn btn-secondary"}
-    = t("buttons.signup_form")
-  %a{:href => combo_form_path(form: 'login_form'), :class => "link btn btn-secondary"}
-    = t("buttons.login_form")
-  %a{:href => combo_form_path(form: 'forgot_password'), :class => "link btn btn-secondary"}
-    = t("buttons.forgot_password")
+  %a{:href => combo_form_path, :class => "link btn btn-secondary"}
+    = t("buttons.sign_up_or_in")
