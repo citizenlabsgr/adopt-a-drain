@@ -35,10 +35,19 @@ class ThingImporter
       return true
     end
 
+    def inferDefaultName(currName)
+
+      if ['Storm Drain', 'Storm Water Inlet Drain', 'Catch Basin Drain'].detect {|str| str == currName }
+        return 'Storm Drain'
+      end
+
+      return currName
+    end
+
     def normalize_thing(json_thing)
 
       norm = {
-        name: json_thing['dr_type'],
+        name: inferDefaultName(json_thing['dr_type']),
         city_id: json_thing['dr_facility_id'],
         lat: json_thing['dr_lat'],
         lng: json_thing['dr_lon'],
