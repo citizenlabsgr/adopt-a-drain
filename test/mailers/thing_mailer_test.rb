@@ -20,7 +20,7 @@ class ThingMailerTest < ActionMailer::TestCase
     @thing = things(:thing_1)
     @thing.user = @user
 
-    assert(File.exists?("#{Rails.root.to_s + '/app/assets/images/logos/adopt-a-drain.png'}"))
+    assert(File.exists?("#{Rails.root.to_s + '/app/assets/images/logos/adopt-a-drain-300.png'}"))
     assert(File.exists?("#{Rails.root.to_s + '/app/assets/images/icons/facebook.png'}"))
     assert(File.exists?("#{Rails.root.to_s + '/app/assets/images/icons/twitter.png'}"))
     assert(File.exists?("#{Rails.root.to_s + '/app/assets/images/icons/instagram.png'}"))
@@ -29,7 +29,7 @@ class ThingMailerTest < ActionMailer::TestCase
     email = ThingMailer.first_adoption_confirmation(@thing)
     assert_nothing_raised { email.message }
 
-    assert_equal ["image/png; filename=adopt-a-drain.png",
+    assert_equal ["image/png; filename=adopt-a-drain-300.png",
                     "image/png; filename=facebook.png",
                     "image/png; filename=twitter.png",
                     "image/png; filename=instagram.png",
@@ -56,7 +56,7 @@ class ThingMailerTest < ActionMailer::TestCase
     @thing = things(:thing_1)
     @thing.user = @user
 
-    assert(File.exists?("#{Rails.root.to_s + '/app/assets/images/logos/adopt-a-drain.png'}"))
+    assert(File.exists?("#{Rails.root.to_s + '/app/assets/images/logos/adopt-a-drain-300.png'}"))
     assert(File.exists?("#{Rails.root.to_s + '/app/assets/images/icons/facebook.png'}"))
     assert(File.exists?("#{Rails.root.to_s + '/app/assets/images/icons/twitter.png'}"))
     assert(File.exists?("#{Rails.root.to_s + '/app/assets/images/icons/instagram.png'}"))
@@ -65,7 +65,7 @@ class ThingMailerTest < ActionMailer::TestCase
     email = ThingMailer.second_adoption_confirmation(@thing)
     assert_nothing_raised { email.message }
 
-    assert_equal ["image/png; filename=adopt-a-drain.png",
+    assert_equal ["image/png; filename=adopt-a-drain-300.png",
                     "image/png; filename=facebook.png",
                     "image/png; filename=twitter.png",
                     "image/png; filename=instagram.png",
@@ -93,7 +93,7 @@ class ThingMailerTest < ActionMailer::TestCase
   #   @thing = things(:thing_1)
   #   @thing.user = @user
 
-  #   assert(File.exists?("#{Rails.root.to_s + '/app/assets/images/logos/adopt-a-drain.png'}"))
+  #   assert(File.exists?("#{Rails.root.to_s + '/app/assets/images/logos/adopt-a-drain-300.png'}"))
   #   assert(File.exists?("#{Rails.root.to_s + '/app/assets/images/icons/facebook.png'}"))
   #   assert(File.exists?("#{Rails.root.to_s + '/app/assets/images/icons/twitter.png'}"))
   #   assert(File.exists?("#{Rails.root.to_s + '/app/assets/images/icons/instagram.png'}"))
@@ -101,7 +101,7 @@ class ThingMailerTest < ActionMailer::TestCase
   #   email = ThingMailer.third_adoption_confirmation(@thing)
   #   assert_nothing_raised { email.message }
 
-  #   assert_equal ["image/png; filename=adopt-a-drain.png",
+  #   assert_equal ["image/png; filename=adopt-a-drain-300.png",
   #                   "image/png; filename=facebook.png",
   #                   "image/png; filename=twitter.png",
   #                   "image/png; filename=instagram.png"],
