@@ -16,25 +16,19 @@
         = t("labels.first_name")
         %small
           = t("captions.public")
-      = f.text_field "first_name", :class => "form-control"
+    = f.text_field "first_name", :class => "form-control"
     .form-group
       %label.control-label{:for => "user_last_name", :id => "user_last_name_label"}
         = t("labels.last_name")
         %small
           = t("captions.private")
-      = f.text_field "last_name", :class => "form-control"
+    = f.text_field "last_name", :class => "form-control"
     .form-group
       %label.control-label{:for => "user_organization", :id => "user_organization_label"}
         = t("labels.organization")
         %small
           = t("captions.public_optional")
-      = f.text_field "organization", :class => "form-control"
-    .form-group.hidden
-      %label.control-label{:for => "user_voice_number", :id => "user_voice_number_label"}
-        = t("labels.voice_number")
-        %small
-          = image_tag "lock.png", :class => "lock", :alt => t("captions.private"), :title => t("captions.private")
-      = f.telephone_field "voice_number", :placeholder => t("defaults.voice_number"), :class => "form-control"
+    = f.text_field "organization", :class => "form-control"
 
     .form-group
       %label.control-label{:for => "user_password_confirmation", :id => "user_password_confirmation_label"}
@@ -64,5 +58,5 @@
       = link_to t("links.remembered_password"), "#", :id => "user_remembered_password_link"
     .form-actions
       = f.submit t("buttons.email_password"), :class => "btn btn-primary btn-block"
-%a{:href => search_path, :class => "link btn btn-default"}
-  = t("buttons.back")
+  %a{:href => search_path, :class => "link btn btn-default"}
+    = t("buttons.back")

@@ -14,6 +14,9 @@ pt:
     sign_in: "Entrar"
     sign_out: "Sair"
     sign_up: "Inscrever-se"
+    signup_form: "Inscreva-se"
+    login_form: "Entrar"
+    forgot_password: "Esqueci a senha"
     update: "Atualizar"
   captions:
     optional: "(opcional)"

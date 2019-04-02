@@ -11,14 +11,20 @@ class ThingsController < ApplicationController
   end
 
   def update
+
     @thing = Thing.find(params[:id])
+
     if @thing.update_attributes(thing_params)
+
       send_adoption_email(@thing.user, @thing) if @thing.adopted?
 
       respond_with @thing
+
     else
+
       render(json: {errors: @thing.errors}, status: 500)
     end
+
   end
 
 private
@@ -33,6 +39,6 @@ private
   end
 
   def thing_params
-    params.require(:thing).permit(:adopted_name, :user_id)
+    params.require(:thing).permit(:adopted_name, :user_id, :adopted_at)
   end
 end

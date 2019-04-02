@@ -27,7 +27,7 @@ services:
       bundle exec rake db:schema:load;
       bundle exec rake db:migrate;
       bundle exec rake data:load_things;
-      echo 'DONE with Data...Launching app';
+      echo 'DONE with Data...ready to launch app';
       bundle exec rails s -p 3000 -b '0.0.0.0'
       "
     volumes:
@@ -37,4 +37,4 @@ services:
     depends_on:
       - db
 # Run the tests
-#   docker-compose run web bundle exec rake test      
+#   docker-compose run web bundle exec rake test

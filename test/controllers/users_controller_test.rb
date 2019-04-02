@@ -15,8 +15,8 @@ class UsersControllerTest < ActionController::TestCase
       assert_select '[action=?]', '/users'
       assert_select '[method=?]', 'post'
     end
-    assert_select 'input', count: 16
-    assert_select 'label', count: 13
+    assert_select 'input', count: 10
+    assert_select 'label', count: 6
     assert_select 'input[name="commit"]' do
       assert_select '[type=?]', 'submit'
       assert_select '[value=?]', 'Update'

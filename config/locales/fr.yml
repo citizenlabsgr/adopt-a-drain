@@ -14,6 +14,9 @@ fr:
     sign_in: "Connexion"
     sign_out: "Inscription sur"
     sign_up: "S'inscrire"
+    signup_form: "Inscrivez-vous"
+    login_form: "Connexion"
+    forgot_password: "mot de passe oublié"
     update: "Mise à jour"
   captions:
     optional: "(optionnelle)"

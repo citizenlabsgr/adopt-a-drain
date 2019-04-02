@@ -26,7 +26,7 @@
 .env
 
 # Ignore dev convenience script
-*.sh
+# *.sh
 
 # Ignore dev startup logs
 00.all.log
