@@ -15,7 +15,7 @@ class InfoWindowControllerTest < ActionController::TestCase
     get :index, thing_id: @thing.id
     assert_not_nil assigns :thing
     assert_response :success
-    assert_template 'users/thank_you'
+    assert_template 'users/adopted_thank_you'
     assert_select 'h2', 'Thank you for adopting this drain!'
     assert_select 'form#abandon_form' do
       assert_select '[action=?]', '/things'
