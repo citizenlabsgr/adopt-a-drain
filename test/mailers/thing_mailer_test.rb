@@ -122,6 +122,6 @@ class ThingMailerTest < ActionMailer::TestCase
     assert_includes email.to, admin1.email
     assert_includes email.to, admin2.email
 
-    assert_equal email.subject, 'Adopt-a-Drain Grand River Basin import (1 adopted drains removed, 0 drains added, 0 unadopted drains removed)'
+    assert_equal email.subject, 'Adopt-a-Drain Lower Grand River Watershed import (1 adopted drains removed, 0 drains added, 0 unadopted drains removed)'
   end
 end
