@@ -50,6 +50,7 @@ Put `.env` in the adopt-a-drain folder of the cloned repo
     OPEN_SOURCE=https://api.data.world/v0/sql/citizenlabs/grb-storm-drains
 
     # Turn on Google SMTP server
+    # Note: if you do this, you need to change your security settings on your Google account
     GMAIL_ADDRESS=<your-gmail-email-address>
     GMAIL_PASSWORD=<your-gmail-password>
 ```
