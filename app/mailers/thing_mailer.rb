@@ -1,32 +1,28 @@
 class ThingMailer < ApplicationMailer
   def first_adoption_confirmation(thing)
-
     @thing = thing
     @user = thing.user
 
-    attachments.inline['adopt-a-drain.png'] = File.read("#{Rails.root.to_s + '/app/assets/images/logos/adopt-a-drain.png'}")
+    attachments.inline['adopt-a-drain-300.png'] = File.read("#{Rails.root.to_s + '/app/assets/images/logos/adopt-a-drain-300.png'}")
     attachments.inline['facebook.png'] = File.read("#{Rails.root.to_s + '/app/assets/images/icons/facebook.png'}")
     attachments.inline['twitter.png'] = File.read("#{Rails.root.to_s + '/app/assets/images/icons/twitter.png'}")
     attachments.inline['instagram.png'] = File.read("#{Rails.root.to_s + '/app/assets/images/icons/instagram.png'}")
     attachments.inline['major-runoff-cleaning.png'] = File.read("#{Rails.root.to_s + '/app/assets/images/major-runoff-cleaning-opt.png'}")
 
     mail(to: @user.email, subject: ["Thanks for adopting a drain, #{@user.name.split.first}!"])
-
   end
 
   def second_adoption_confirmation(thing)
-
     @thing = thing
     @user = thing.user
 
-    attachments.inline['adopt-a-drain.png'] = File.read("#{Rails.root.to_s + '/app/assets/images/logos/adopt-a-drain.png'}")
+    attachments.inline['adopt-a-drain-300.png'] = File.read("#{Rails.root.to_s + '/app/assets/images/logos/adopt-a-drain-300.png'}")
     attachments.inline['facebook.png'] = File.read("#{Rails.root.to_s + '/app/assets/images/icons/facebook.png'}")
     attachments.inline['twitter.png'] = File.read("#{Rails.root.to_s + '/app/assets/images/icons/twitter.png'}")
     attachments.inline['instagram.png'] = File.read("#{Rails.root.to_s + '/app/assets/images/icons/instagram.png'}")
     attachments.inline['major-runoff-thumbs-up.png'] = File.read("#{Rails.root.to_s + '/app/assets/images/major-runoff-thumbs-up-opt.png'}")
 
     mail(to: @user.email, subject: ["Thanks for adopting another drain, #{@user.name.split.first}!"])
-    
   end
 
   # This email is unused at this time
