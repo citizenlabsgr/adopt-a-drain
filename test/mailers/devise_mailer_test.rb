@@ -9,6 +9,6 @@ class DeviseMailerTest < ActionMailer::TestCase
     assert_not ActionMailer::Base.deliveries.empty?
     assert_equal ['no-reply@lgrow.org'], email.from
     assert_equal ['erik@example.com'], email.to
-    assert_equal 'Adopt-a-drain Grand River Basin reset password instructions', email.subject
+    assert_equal 'Adopt-a-drain Lower Grand River Watershed reset password instructions', email.subject
   end
 end

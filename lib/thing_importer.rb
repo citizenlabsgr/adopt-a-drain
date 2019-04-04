@@ -3,7 +3,7 @@ require 'uri'
 require 'net/http'
 require 'json'
 # class for importing things from JSON data.world datasource
-# is currently very specific to drains from Grand River Basin
+# is currently very specific to drains from Lower Grand River Watershed
 #
 # Dataset:
 # https://api.data.world/v0/sql/citizenlabs/grb-storm-drains
