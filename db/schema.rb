@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190403161810) do
+ActiveRecord::Schema.define(version: 20190404124311) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,7 +49,6 @@ ActiveRecord::Schema.define(version: 20190403161810) do
     t.string   "name"
     t.decimal  "lat",             precision: 16, scale: 14, null: false
     t.decimal  "lng",             precision: 17, scale: 14, null: false
-    t.integer  "city_id"
     t.integer  "user_id"
     t.string   "system_use_code"
     t.datetime "deleted_at"
@@ -59,7 +58,6 @@ ActiveRecord::Schema.define(version: 20190403161810) do
     t.string   "dr_asset_id"
   end
 
-  add_index "things", ["city_id"], name: "index_things_on_city_id", unique: true, using: :btree
   add_index "things", ["deleted_at"], name: "index_things_on_deleted_at", using: :btree
   add_index "things", ["dr_asset_id"], name: "index_things_on_dr_asset_id", unique: true, using: :btree
 

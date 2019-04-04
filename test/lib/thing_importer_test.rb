@@ -5,28 +5,28 @@ require 'thing_importer'
 class ThingImporterTest < ActiveSupport::TestCase
   fake_response = '[
   {
-    "dr_facility_id": 3,
+    "dr_asset_id": "TEST-3",
     "dr_lat": 42.38,
     "dr_lon": -71.07,
     "dr_type": "Catch Basin Drain",
     "dr_subwatershed": "ABC"
   },
   {
-    "dr_facility_id": 10,
+    "dr_asset_id": "TEST-10",
     "dr_lat": 36.75,
     "dr_lon": -121.40,
     "dr_type": "Catch Basin Drain",
     "dr_subwatershed": "DEF"
   },
   {
-    "dr_facility_id": 11,
+    "dr_asset_id": "TEST-11",
     "dr_lat": 37.75,
     "dr_lon": -122.40,
     "dr_type": "Catch Basin Drain",
     "dr_subwatershed": "ABC"
   },
   {
-    "dr_facility_id": 12,
+    "dr_asset_id": "TEST-12",
     "dr_lat": 39.75,
     "dr_lon": -121.40,
     "dr_type": "Catch Basin Drain",
@@ -82,16 +82,16 @@ class ThingImporterTest < ActiveSupport::TestCase
     thing10.reload
 
     # Asserts thing_1 is deleted
-    assert_nil Thing.find_by(id: thing1.id)
+    assert_nil Thing.find_by(dr_asset_id: thing1.dr_asset_id)
 
     # Asserts thing_3 is reified
     expected = deleted_thing.id
-    actual = Thing.find_by(city_id: 3).id
+    actual = Thing.find_by(dr_asset_id: 'TEST-3').dr_asset_id
 
-    assert_equal actual, deleted_thing.id
+    assert_equal actual, deleted_thing.dr_asset_id
 
     # Asserts creates new thing
-    new_thing = Thing.find_by(city_id: 12)
+    new_thing = Thing.find_by(dr_asset_id: 'TEST-12')
     assert_not_nil new_thing
 
     assert_equal new_thing.lat, BigDecimal.new(39.75, 16)

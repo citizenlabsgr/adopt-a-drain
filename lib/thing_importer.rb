@@ -48,7 +48,6 @@ class ThingImporter
 
       norm = {
         name: inferDefaultName(json_thing['dr_type']),
-        city_id: json_thing['dr_facility_id'],
         lat: json_thing['dr_lat'],
         lng: json_thing['dr_lon'],
         type: json_thing['dr_type'],
@@ -68,11 +67,7 @@ class ThingImporter
         rc = false
         raise "Unknown drain type: "
       end
-      # check value city_id is integer
-      if not integer?(thing[:city_id])
-        rc = false
-        raise "City_id is not integer "
-      end
+
 
       return rc
     end
@@ -88,13 +83,12 @@ class ThingImporter
           name varchar,
           lat numeric(16,14),
           lng numeric(17,14),
-          city_id integer,
           system_use_code varchar,
           jurisdiction varchar,
           dr_asset_id varchar
         )
       SQL
-      conn.raw_connection.prepare(insert_statement_id, 'INSERT INTO temp_thing_import (name, lat, lng, city_id, system_use_code, jurisdiction, dr_asset_id) VALUES($1, $2, $3, $4, $5, $6, $7)')
+      conn.raw_connection.prepare(insert_statement_id, 'INSERT INTO temp_thing_import (name, lat, lng, system_use_code, jurisdiction, dr_asset_id) VALUES($1, $2, $3, $4, $5, $6)')
 
       # data.world code
       url = URI(source_url)
@@ -109,7 +103,7 @@ class ThingImporter
 
       # get all the data
       request.body = "{\"query\":\"select * from grb_drains\",\"includeTableSchema\":false}"
-      #request.body = "{\"query\":\"select * from grb-storm-drains-2019-04-02\",\"includeTableSchema\":false}"
+
       response = http.request(request)
 
       json_string = response.read_body
@@ -125,11 +119,11 @@ class ThingImporter
       .each do |drain|
         conn.raw_connection.exec_prepared(
            insert_statement_id,
-           [drain[:name], drain[:lat], drain[:lng], drain[:city_id], drain[:system_use_code], drain[:jurisdiction], drain[:dr_asset_id]],
+           [drain[:name], drain[:lat], drain[:lng], drain[:system_use_code], drain[:jurisdiction], drain[:dr_asset_id]],
         )
       end
 
-      conn.execute('CREATE INDEX "temp_thing_import_city_id" ON temp_thing_import(city_id)')
+      conn.execute('CREATE INDEX "temp_thing_import_dr_asset_id" ON temp_thing_import(dr_asset_id)')
 
     end
 
@@ -140,8 +134,8 @@ class ThingImporter
       deleted_things = ActiveRecord::Base.connection.execute(<<-SQL.strip_heredoc)
         UPDATE things
         SET deleted_at = NOW()
-        WHERE things.city_id NOT IN (SELECT city_id from temp_thing_import) AND deleted_at IS NULL
-        RETURNING things.city_id, things.user_id
+        WHERE things.dr_asset_id NOT IN (SELECT dr_asset_id from temp_thing_import) AND deleted_at IS NULL
+        RETURNING things.dr_asset_id, things.user_id
       SQL
       deleted_things.partition { |thing| thing['user_id'].present? }
     end
@@ -151,16 +145,16 @@ class ThingImporter
       # query for the items to be inserted first
 
       created_things = ActiveRecord::Base.connection.execute(<<-SQL.strip_heredoc)
-        SELECT temp_thing_import.city_id
+        SELECT temp_thing_import.dr_asset_id
         FROM things
-        RIGHT JOIN temp_thing_import ON temp_thing_import.city_id = things.city_id
+        RIGHT JOIN temp_thing_import ON temp_thing_import.dr_asset_id = things.dr_asset_id
         WHERE things.id IS NULL
       SQL
 
       ActiveRecord::Base.connection.execute(<<-SQL.strip_heredoc)
-        INSERT INTO things(name, lat, lng, city_id, system_use_code, jurisdiction, dr_asset_id)
-        SELECT name, lat, lng, city_id, system_use_code, jurisdiction, dr_asset_id FROM temp_thing_import
-        ON CONFLICT(city_id) DO UPDATE SET
+        INSERT INTO things(name, lat, lng, system_use_code, jurisdiction, dr_asset_id)
+        SELECT name, lat, lng, system_use_code, jurisdiction, dr_asset_id FROM temp_thing_import
+        ON CONFLICT(dr_asset_id) DO UPDATE SET
           lat = EXCLUDED.lat,
           lng = EXCLUDED.lng,
           name = EXCLUDED.name,
