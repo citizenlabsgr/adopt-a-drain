@@ -41,4 +41,5 @@ public/assets
 # Ignore MacOS file changes
 *.DS_Store
 
+# Ignore rspec examples 
 /spec/examples.txt

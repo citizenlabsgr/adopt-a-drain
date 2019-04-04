@@ -13,7 +13,5 @@
     %p
       %a{href: "#{@thing.detail_link}", target: '_blank'}
         = t("links.thing_details", :thing => t("defaults.thing"))
-  %p
-    = t("labels.discharges_to", :place => @thing.system_use_code)
-  %p
-    = t("labels.jurisdiction", :place => @thing.jurisdiction)
+
+= render :partial => 'things/jurisdiction'

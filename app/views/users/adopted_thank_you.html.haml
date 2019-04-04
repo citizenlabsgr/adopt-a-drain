@@ -1,0 +1,12 @@
+%h2
+  = t("titles.thank_you", thing: t("defaults.thing"))
+%h2
+  %a{ target: '_blank', href: "https://twitter.com/intent/tweet?text=#{URI.encode(t("titles.tweet_text", thing: t("defaults.thing")))}"}
+    %i.fa.fa-twitter-square.fa-2x
+  %a{ target: '_blank', href: "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.adoptadrain-lgrow.org" }
+    %i.fa.fa-facebook-square.fa-2x
+  %a{ target: '_blank', href: "mailto:?subject=#{URI.encode(t('titles.main', thing: t('defaults.thing'), context: t('context.place') ))}&body=#{URI.encode(t('titles.email_text', context: t('context.place')))}" }
+    %i.fa.fa-envelope-square.fa-2x
+%hr
+= render :partial => 'users/profile'
+= render :partial => 'things/abandon'

@@ -3,7 +3,7 @@ class InfoWindowController < ApplicationController
     @thing = Thing.find_by(id: params[:thing_id])
     view = begin
       if @thing.adopted?
-        user_signed_in? && current_user == @thing.user ? 'users/thank_you' : 'users/profile'
+        user_signed_in? && current_user == @thing.user ? 'users/adopted_thank_you' : 'users/profile'
       else
         user_signed_in? ? 'things/adopt' : 'users/sign_in'
       end

@@ -16,7 +16,7 @@ class PasswordsControllerTest < ActionController::TestCase
     email = ActionMailer::Base.deliveries.last
     assert_equal [@user.email], email.to
 
-    assert_equal 'Adopt-a-drain Grand River Basin reset password instructions', email.subject
+    assert_equal 'Adopt-a-drain Lower Grand River Watershed reset password instructions', email.subject
   end
 
   test 'should not send password reset instructions if email address is not found' do
