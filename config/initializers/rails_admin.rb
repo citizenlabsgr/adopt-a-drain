@@ -20,7 +20,7 @@ RailsAdmin.config do |config|
       label 'Drain Import Date'
     end
 
-    configure :city_id do
+    configure :dr_asset_id do
       label 'Maximo ID'
     end
   end
