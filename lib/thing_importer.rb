@@ -53,7 +53,8 @@ class ThingImporter
         lng: json_thing['dr_lon'],
         type: json_thing['dr_type'],
         system_use_code: json_thing['dr_subwatershed'],
-        jurisdiction: json_thing['dr_jurisdiction']
+        jurisdiction: json_thing['dr_jurisdiction'],
+        dr_asset_id: json_thing['dr_asset_id']
       }
 
       return norm
@@ -89,10 +90,11 @@ class ThingImporter
           lng numeric(17,14),
           city_id integer,
           system_use_code varchar,
-          jurisdiction varchar
+          jurisdiction varchar,
+          dr_asset_id varchar
         )
       SQL
-      conn.raw_connection.prepare(insert_statement_id, 'INSERT INTO temp_thing_import (name, lat, lng, city_id, system_use_code, jurisdiction) VALUES($1, $2, $3, $4, $5, $6)')
+      conn.raw_connection.prepare(insert_statement_id, 'INSERT INTO temp_thing_import (name, lat, lng, city_id, system_use_code, jurisdiction, dr_asset_id) VALUES($1, $2, $3, $4, $5, $6, $7)')
 
       # data.world code
       url = URI(source_url)
@@ -107,8 +109,9 @@ class ThingImporter
 
       # get all the data
       request.body = "{\"query\":\"select * from grb_drains\",\"includeTableSchema\":false}"
-
+      #request.body = "{\"query\":\"select * from grb-storm-drains-2019-04-02\",\"includeTableSchema\":false}"
       response = http.request(request)
+
       json_string = response.read_body
 
       # patch up to work around error
@@ -122,11 +125,12 @@ class ThingImporter
       .each do |drain|
         conn.raw_connection.exec_prepared(
            insert_statement_id,
-           [drain[:name], drain[:lat], drain[:lng], drain[:city_id], drain[:system_use_code], drain[:jurisdiction]],
+           [drain[:name], drain[:lat], drain[:lng], drain[:city_id], drain[:system_use_code], drain[:jurisdiction], drain[:dr_asset_id]],
         )
       end
 
       conn.execute('CREATE INDEX "temp_thing_import_city_id" ON temp_thing_import(city_id)')
+
     end
 
     # mark drains as deleted that do not exist in the new set
@@ -154,14 +158,15 @@ class ThingImporter
       SQL
 
       ActiveRecord::Base.connection.execute(<<-SQL.strip_heredoc)
-        INSERT INTO things(name, lat, lng, city_id, system_use_code, jurisdiction)
-        SELECT name, lat, lng, city_id, system_use_code, jurisdiction FROM temp_thing_import
+        INSERT INTO things(name, lat, lng, city_id, system_use_code, jurisdiction, dr_asset_id)
+        SELECT name, lat, lng, city_id, system_use_code, jurisdiction, dr_asset_id FROM temp_thing_import
         ON CONFLICT(city_id) DO UPDATE SET
           lat = EXCLUDED.lat,
           lng = EXCLUDED.lng,
           name = EXCLUDED.name,
           deleted_at = NULL,
-          jurisdiction = EXCLUDED.jurisdiction
+          jurisdiction = EXCLUDED.jurisdiction,
+          dr_asset_id = EXCLUDED.dr_asset_id
       SQL
 
       return created_things

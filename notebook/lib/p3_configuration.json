@@ -1,0 +1,90 @@
+{
+    "references": {
+        "no-show-appointments": {
+            "type": "data",
+            "title": "Medical Appointment No Shows",
+            "provider": "kaggle",
+            "period": "",
+            "website": "https://www.kaggle.com/joniarroba/noshowappointments",
+            "url": "https://d17h27t6h515a5.cloudfront.net/topher/2017/October/59dd2e9a_noshowappointments-kagglev2-may-2016/noshowappointments-kagglev2-may-2016.csv",
+            "local": "no-show-appointments.csv",
+            "exports": {
+                "condensed": "<csv_output_filename>",
+                "fields": [
+                    {"field_in": "<col-name>", "field_out": "<col-name>", "function": ""}
+                ]
+            },
+            "transforms": {
+
+            }
+        },"stategies": {
+            "type": "website",
+            "title": "Strategic Goal 1: Strengthen Health Care",
+            "provider": "U.S. Department of Health & Human Services ",
+            "period": "2016",
+            "website": "https://www.hhs.gov/about/strategic-plan/strategic-goal-1/index.html"
+        },"age_group_categories": {
+            "type": "website",
+            "title": "Brazil Age structure",
+            "provider": "Index Mundi",
+            "period": "2016",
+            "website": "http://www.indexmundi.com/brazil/age_structure.html"
+        },"column_name_style": {
+            "type": "website",
+            "title": "Pep 8 Style Guide for Python Code",
+            "provider": "python.org",
+            "period": "2017",
+            "website": "https://www.python.org/dev/peps/pep-0008/#descriptive-naming-styles"
+        },"data_frame": {
+            "type": "website",
+            "title": "pandas DataFrame",
+            "provider": "pandas.pydata.org",
+            "period": "2017",
+            "website": "https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html"
+        },"no-shows": {
+            "type": "website",
+            "title": "Prevalence, predictors and economic consequences of no-shows",
+            "provider": "BMC Health Serv Res",
+            "period": "2016",
+            "website": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4714455/"
+        },"colors": {
+            "type": "website",
+            "title": "Python Color Constants Module",
+            "provider": "webucator",
+            "period": "2017",
+            "website":"https://www.webucator.com/blog/2015/03/python-color-constants-module/"
+        },"choose-graph": {
+            "type": "website",
+            "title": "Choosing the Best Graph Type",
+            "provider": "webucator",
+            "period": "2017",
+            "website":"http://sphweb.bumc.bu.edu/otlt/mph-modules/bs/datapresentation/DataPresentation7.html"
+        },"config": {
+            "type": "config",
+            "title": "Project Configurations",
+            "provider": "James Wilfong",
+            "period": "2017",
+            "local":"p3_configuration.json"
+        },"questions": {
+            "type": "config",
+            "title": "Research Questions",
+            "provider": "James Wilfong",
+            "period": "2017",
+            "local":"p3_questions.json"
+        },"no-shows": {
+            "type": "website",
+            "title": "How Much Are Cancelled Appointments & No-Shows Costing You?",
+            "provider": "lumaHealth",
+            "period": "2017",
+            "website":"https://www.lumahealth.io/blog/how-much-are-cancelled-appointments-no-shows-costing-you/"
+        }
+        
+        
+        
+        
+        
+        
+        
+            
+    }
+}
