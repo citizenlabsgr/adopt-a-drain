@@ -11,10 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190404124311) do
+ActiveRecord::Schema.define(version: 20190404182729) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "adoptions", force: :cascade do |t|
+    t.integer  "adpt_userid"
+    t.string   "adpt_name"
+    t.string   "adpt_jurisdiction"
+    t.string   "adpt_flows_to"
+    t.string   "adpt_assetid"
+    t.datetime "adpt_created_at",   default: '2019-04-04 19:04:45', null: false
+    t.datetime "adpt_updated_at",   default: '2019-04-04 19:04:45', null: false
+    t.datetime "adpt_adopted_at",   default: '2019-04-04 19:04:45', null: false
+    t.datetime "adpt_deleted_at",   default: '2019-04-04 19:04:45', null: false
+  end
 
   create_table "rails_admin_histories", force: :cascade do |t|
     t.string   "message"
