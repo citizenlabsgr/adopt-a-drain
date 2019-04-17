@@ -43,3 +43,7 @@ public/assets
 
 # Ignore rspec examples 
 /spec/examples.txt
+
+# Ignore jupyter checkpoints
+/.ipynb_checkpoints
+/__pycache__
