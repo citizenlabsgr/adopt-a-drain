@@ -317,7 +317,6 @@ PLATFORMS
 DEPENDENCIES
   airbrake (~> 7.1)
   bundler-audit (~> 0.6)
-  byebug
   capybara
   chromedriver-helper
   concurrent-ruby (>= 1.1.5)
@@ -354,7 +353,7 @@ DEPENDENCIES
   webmock
 
 RUBY VERSION
-   ruby 2.5.3p0
+   ruby 2.5.3p105
 
 BUNDLED WITH
-   1.17.2
+   1.17.3

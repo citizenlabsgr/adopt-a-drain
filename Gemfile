@@ -20,10 +20,11 @@ gem 'validates_formatting_of', '~> 0.9'
 gem 'paranoia', '~> 2.4'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw]
 
-gem 'byebug', groups: %i[development test]
 gem 'dotenv-rails'
 gem 'execjs'
 gem 'therubyracer'
+
+gem 'puma'
 
 
 group :assets do
@@ -40,7 +41,6 @@ group :development, :test do
 end
 
 group :production do
-  gem 'puma'
   gem 'rails_12factor'
   gem 'skylight'
 end
