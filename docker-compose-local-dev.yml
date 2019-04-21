@@ -1,0 +1,13 @@
+# This version of the docker-compose file:
+#   - only runs the db in docker, allowing "easier" local development
+#   - can be run via `docker-compose -f docker-compose-local-dev.yml up`
+
+version: '3'
+
+services:
+  db:
+    image: library/postgres:9.6
+    ports:
+      - "5432:5432"
+    volumes:
+      - "~/data_cl_aad/pgdata:/var/lib/postgresql/data"
