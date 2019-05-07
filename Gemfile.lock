@@ -145,7 +145,7 @@ GEM
     mini_portile2 (2.4.0)
     minitest (5.11.3)
     nested_form (0.3.2)
-    nokogiri (1.10.1)
+    nokogiri (1.10.3)
       mini_portile2 (~> 2.4.0)
     obscenity (1.0.2)
     orm_adapter (0.5.0)
