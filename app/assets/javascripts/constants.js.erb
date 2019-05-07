@@ -1,9 +1,9 @@
 this.constants = {
   abandonConfirmText: 'Are you sure you want to abandon this <%= I18n.t("defaults.thing") %>?',
-  iconBase: '/assets/markers/',
-  adoptedMarkerImage: '/assets/markers/adopted-drain.svg',
-  adoptedByYouImage: '/assets/markers/your-adopted-drain.svg',
-  toSewerMarkerImage: '/assets/markers/available-drain.svg',
-  toBayOceanMarkerImage: '/assets/markers/tobay.png',
-  markerShadowImage: '/assets/markers/shadow.png'
+  iconBase: '<%= image_path '/markers/' %>',
+  adoptedMarkerImage: '<%= image_path '/assets/markers/adopted-drain.svg' %>',
+  adoptedByYouImage: '<%= image_path '/assets/markers/your-adopted-drain.svg' %>',
+  toSewerMarkerImage: '<%= image_path '/assets/markers/available-drain.svg' %>',
+  toBayOceanMarkerImage: '<%= image_path '/assets/markers/tobay.png' %>',
+  markerShadowImage: '<%= image_path '/assets/markers/shadow.png' %>'
 }

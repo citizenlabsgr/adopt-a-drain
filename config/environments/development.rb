@@ -9,18 +9,18 @@ Rails.application.configure do
   config.cache_classes = false
 
   # asset host
-  config.action_controller.asset_host = Proc.new { |source, request|
-    # source = "/assets/brands/stockholm_logo_horizontal.png"
-    # request = A full-fledged ActionDispatch::Request instance
+  # config.action_controller.asset_host = Proc.new { |source, request|
+  #   # source = "/assets/brands/stockholm_logo_horizontal.png"
+  #   # request = A full-fledged ActionDispatch::Request instance
 
-    # sometimes request is nil and everything breaks
-    scheme = request.try(:scheme).presence || "http"
-    host = request.try(:host).presence || "localhost:3000"
-    port = request.try(:port).presence || nil
+  #   # sometimes request is nil and everything breaks
+  #   scheme = request.try(:scheme).presence || "http"
+  #   host = request.try(:host).presence || "localhost:3000"
+  #   port = request.try(:port).presence || nil
 
-    ["#{scheme}://#{host}", port].reject(&:blank?).join(":")
-  }
-  config.action_mailer.asset_host = config.action_controller.asset_host
+  #   ["#{scheme}://#{host}", port].reject(&:blank?).join(":")
+  # }
+  # config.action_mailer.asset_host = config.action_controller.asset_host
 
   # Do not eager load code on boot.
   config.eager_load = false
