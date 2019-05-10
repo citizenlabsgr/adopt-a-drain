@@ -47,12 +47,12 @@ end
 
 group :test do
   gem 'coveralls', require: false
-  gem 'rubocop'
+  gem 'rubocop', '~> 0.68.1', require: false
+  gem 'rubocop-performance'
   gem 'simplecov', require: false
   gem 'webmock'
   gem 'rspec-rails'
   gem 'capybara'
-  gem 'selenium-webdriver'
-  gem 'chromedriver-helper'
+  gem 'webdrivers'
   gem 'database_cleaner'
 end
