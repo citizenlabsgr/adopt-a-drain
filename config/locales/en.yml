@@ -116,7 +116,7 @@ en:
     tweet_text: "I’m a Storm Drain Superhero! I just adopted a drain in the Lower Grand River Watershed! @LGROW_GVMC #LGROW #KeepYourLakesGreatandYourRiverGrand #AdoptaDrainGrandRiver"
     tos: "Terms of Use"
   site:
-    description: "You can adopt one of %{context}'s 40,000+ storm drains and pledge to help keep it clear of leaves and debris this rainy season. Lend a hand and help the community avoid flooding."
+    description: "You can adopt one of %{context.place}'s storm drains and pledge to help keep it clear of leaves and debris this rainy season. Lend a hand and help the community avoid flooding."
   sponsors:
     built: "Code for San Francisco"
     cl: "CitizenLabs"
