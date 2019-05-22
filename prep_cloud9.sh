@@ -11,8 +11,8 @@
 #
 # 1. Create a base Cloud9 environment, using an Amazon Linux base
 # 2. Clone the repository into that instance.
-# 3. Run this script: `sudo ./prep_cloud9.sh`
-# 4. Setup .env (including DB_PASSWORD="password")
+# 3. Setup .env (including DB_PASSWORD="password")
+# 4. Run this script: `sudo ./prep_cloud9.sh`
 # 5. `./serve.sh`
 #
 # At that point, a server is running. If you hit the 'Preview' button a browser
@@ -28,7 +28,9 @@
 
 yum install postgresql95 postgresql95-server postgresql95-devel postgresql95-contrib postgresql95-docs;
 service postgresql95 initdb;
+pushd /
 sudo -u postgres psql -c "ALTER USER postgres WITH PASSWORD 'password'";
+popd
 chkconfig postgresql95 on;
 service postgresql95 start;
 echo -e "local all all trust\nhost all all 127.0.0.1/32 trust\nhost all all ::1/128 ident" > /var/lib/pgsql95/data/pg_hba.conf;
