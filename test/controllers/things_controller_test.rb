@@ -66,7 +66,7 @@ class ThingsControllerTest < ActionController::TestCase
 
     email = ActionMailer::Base.deliveries.last
     assert_equal [@user.email], email.to
-    assert_equal 'Thanks for adopting a drain, Dan!', email.subject
+    assert_equal 'Thanks for adopting a drain', email.subject
   end
 
   test 'should send second confirmation email' do
