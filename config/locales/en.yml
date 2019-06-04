@@ -39,14 +39,12 @@ en:
     city: "Grand Rapids"
     city_state: "Grand Rapids, Michigan"
     neighborhood: "Civic Center"
-    sms_number: "415-555-1212"
     state: "MI"
     thing: "drain"
     things: "drains"
     this_thing: "This %{thing}"
     tagline: "What does it mean to adopt a drain?"
     tos: "By signing up, you agree to the %{tos}."
-    voice_number: "415-555-1212"
     zip: "49503"
   email:
     info_address: "hello@citizenlabs.org"
@@ -116,17 +114,7 @@ en:
     tweet_text: "I’m a Storm Drain Superhero! I just adopted a drain in the Lower Grand River Watershed! @LGROW_GVMC #LGROW #KeepYourLakesGreatandYourRiverGrand #AdoptaDrainGrandRiver"
     tos: "Terms of Use"
   site:
-    description: "You can adopt one of %{context.place}'s storm drains and pledge to help keep it clear of leaves and debris this rainy season. Lend a hand and help the community avoid flooding."
+    description: "You can adopt one of Grand River's storm drains and pledge to help keep it clear of leaves and debris this rainy season. Lend a hand and help the community avoid flooding."
   sponsors:
-    built: "Code for San Francisco"
     cl: "CitizenLabs"
     lgrow: "LGROW"
-    cfa: "Code for America"
-    city: "City of San Francisco"
-    dt: "Department of Technology"
-    datasf: "DataSF"
-    sfpw: "San Francisco Public Works"
-    sfpuc: "San Francisco Public Utilities Commission"
-    mayor:
-      name: "Edwin M. Lee"
-      title: "Mayor"
