@@ -9,7 +9,7 @@ class ThingMailer < ApplicationMailer
     attachments.inline['instagram.png'] = File.read("#{Rails.root.to_s + '/app/assets/images/icons/instagram.png'}")
     attachments.inline['major-runoff-cleaning.png'] = File.read("#{Rails.root.to_s + '/app/assets/images/major-runoff-cleaning-opt.png'}")
 
-    mail(to: @user.email, subject: ["Thanks for adopting a drain, #{@user.name.split.first}!"])
+    mail(to: @user.email, subject: ["Thanks for adopting a drain"])
   end
 
   def second_adoption_confirmation(thing)

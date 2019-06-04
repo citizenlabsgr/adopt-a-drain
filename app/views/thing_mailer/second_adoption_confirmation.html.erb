@@ -11,19 +11,24 @@
   </p>
   
   <p>
-    Use social media to spread the word! Be sure to tag us @LGROW_org on Instagram and @LGROW.org on Facebook and use the hashtags #LGROW,#AdoptaDrainGrandRiver and #KeepYourLakesGreatAndRiverGrand.
+    Use social media to spread the word! Be sure to tag us @LGROW_org on Instagram and @LGROW.org on Facebook and use the hashtags #LGROW, #AdoptaDrainGrandRiver and #KeepYourLakesGreatAndRiverGrand.
   </p>
 
   <p>
-    If you encounter medical waste, construction debris, or if the drain is clogged beneath the grate, report it to the municipality responsible for your drain. Information on how to contact each municipality is available <a href="lgrow.org/disposal">HERE</a>.
+    If you encounter medical waste, construction debris, or if the drain is clogged beneath the grate, report it to the municipality responsible for your drain. Information on how to contact each municipality is available <a href="https://www.lgrow.org/disposal">HERE</a>.
   </p>
 
   <p>
     As always, please let us know if you have any feedback or questions about
-    this program. We love to hear from you.
+    this program. We would love to hear from you.
   </p>
 
   <%= render :partial => 'signature' %>
+
+  <%= render :partial => 'email_footer_disclaimer' %>
+  <p>
+  For residents of Kent County who are eligible for GR City Points, use the code <b>96LB-GSQF</b> to redeem points in your GR City Points account at <a href="http://www.mygrcitypoints.com">http://www.mygrcitypoints.com/</a>
+  </p>
 
   <p>
   <%= image_tag attachments['major-runoff-thumbs-up.png'].url,
@@ -31,7 +36,8 @@
       :title => "adopt-a-drain major-runoff-thumbs-up"
   %>
   </p>
-  <%= render :partial => 'email_footer' %>
+
+  <%= render :partial => 'email_footer_below' %>
 
   <%= render :partial => 'social_media' %>
 
