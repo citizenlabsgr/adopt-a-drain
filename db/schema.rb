@@ -17,16 +17,15 @@ ActiveRecord::Schema.define(version: 20190404182729) do
   enable_extension "plpgsql"
 
   create_table "adoptions", force: :cascade do |t|
-    t.integer  "adpt_userid"
+    t.string   "adpt_assetid",                                      null: false
+    t.integer  "adpt_userid",                                       null: false
     t.string   "adpt_name"
     t.string   "adpt_jurisdiction"
     t.string   "adpt_flows_to"
-    t.string   "adpt_assetid"
-    t.datetime "adpt_created_at",   default: '2019-04-04 19:04:45', null: false
-    t.datetime "adpt_updated_at",   default: '2019-04-04 19:04:45', null: false
-    t.datetime "adpt_adopted_at",   default: '2019-04-04 19:04:45', null: false
-    t.datetime "adpt_deleted_at",   default: '2019-04-04 19:04:45', null: false
+    t.datetime "adpt_created_at",   default: '2019-04-21 15:59:41', null: false
   end
+
+  add_index "adoptions", ["adpt_assetid"], name: "index_adoptions_on_adpt_assetid", unique: true, using: :btree
 
   create_table "rails_admin_histories", force: :cascade do |t|
     t.string   "message"
