@@ -1,10 +1,13 @@
 language: ruby
 rvm:
-- 2.5.3
+- 2.5.5
 
 addons:
   postgresql: "9.6"
   chrome: stable
+  
+before_install:
+- gem install bundler --version '1.17.2'
 
 cache: bundler
 

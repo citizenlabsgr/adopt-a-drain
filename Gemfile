@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.5.3'
+ruby '2.5.5'
 
 gem 'airbrake', '~> 7.1'
 gem 'bundler-audit', '~> 0.6'
