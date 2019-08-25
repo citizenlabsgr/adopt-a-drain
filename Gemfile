@@ -20,11 +20,11 @@ gem 'validates_formatting_of', '~> 0.9'
 gem 'paranoia', '~> 2.4'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw]
 
-gem 'byebug', groups: %i[development test]
+gem 'byebug', groups: %i[development est]
 gem 'dotenv-rails'
 gem 'execjs'
 gem 'therubyracer'
-
+gem 'nokogiri', '~> 1.10.4'
 
 group :assets do
   gem 'sass-rails', '>= 4.0.3'
