@@ -6,7 +6,8 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - "~/data_cl_aad/pgdata:/var/lib/postgresql/data"
+      - "~/.aad/pgdata:/var/lib/postgresql/data"
+      # - "~/data_cl_aad/pgdata:/var/lib/postgresql/data"
 
   web:
     image: citizenlabs/adopt-a-drain
