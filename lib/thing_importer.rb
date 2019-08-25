@@ -53,7 +53,8 @@ class ThingImporter
         type: json_thing['dr_type'],
         system_use_code: json_thing['dr_subwatershed'],
         jurisdiction: json_thing['dr_jurisdiction'],
-        dr_asset_id: json_thing['dr_asset_id']
+        dr_asset_id: json_thing['dr_asset_id'],
+        dr_discharge: json_thing['dr_discharge']
       }
 
       return norm
@@ -85,10 +86,11 @@ class ThingImporter
           lng numeric(17,14),
           system_use_code varchar,
           jurisdiction varchar,
-          dr_asset_id varchar
+          dr_asset_id varchar,
+          dr_discharge varchar
         )
       SQL
-      conn.raw_connection.prepare(insert_statement_id, 'INSERT INTO temp_thing_import (name, lat, lng, system_use_code, jurisdiction, dr_asset_id) VALUES($1, $2, $3, $4, $5, $6)')
+      conn.raw_connection.prepare(insert_statement_id, 'INSERT INTO temp_thing_import (name, lat, lng, system_use_code, jurisdiction, dr_asset_id, dr_discharge) VALUES($1, $2, $3, $4, $5, $6, $7)')
 
       # data.world code
       url = URI(source_url)
@@ -110,6 +112,7 @@ class ThingImporter
 
       # patch up to work around error
       json_string = '{ "data": ' + json_string + '}'
+      
       # end data world code
 
       # move data.world data into app db
@@ -119,7 +122,7 @@ class ThingImporter
       .each do |drain|
         conn.raw_connection.exec_prepared(
            insert_statement_id,
-           [drain[:name], drain[:lat], drain[:lng], drain[:system_use_code], drain[:jurisdiction], drain[:dr_asset_id]],
+           [drain[:name], drain[:lat], drain[:lng], drain[:system_use_code], drain[:jurisdiction], drain[:dr_asset_id], drain[:dr_discharge]],
         )
       end
 
@@ -152,15 +155,16 @@ class ThingImporter
       SQL
 
       ActiveRecord::Base.connection.execute(<<-SQL.strip_heredoc)
-        INSERT INTO things(name, lat, lng, system_use_code, jurisdiction, dr_asset_id)
-        SELECT name, lat, lng, system_use_code, jurisdiction, dr_asset_id FROM temp_thing_import
+        INSERT INTO things(name, lat, lng, system_use_code, jurisdiction, dr_asset_id, dr_discharge)
+        SELECT name, lat, lng, system_use_code, jurisdiction, dr_asset_id, dr_discharge FROM temp_thing_import
         ON CONFLICT(dr_asset_id) DO UPDATE SET
           lat = EXCLUDED.lat,
           lng = EXCLUDED.lng,
           name = EXCLUDED.name,
           deleted_at = NULL,
           jurisdiction = EXCLUDED.jurisdiction,
-          dr_asset_id = EXCLUDED.dr_asset_id
+          dr_asset_id = EXCLUDED.dr_asset_id,
+          dr_discharge = EXCLUDED.dr_discharge
       SQL
 
       return created_things

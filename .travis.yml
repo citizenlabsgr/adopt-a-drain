@@ -5,7 +5,7 @@ rvm:
 addons:
   postgresql: "9.6"
   chrome: stable
-  
+
 before_install:
 - gem install bundler --version '1.17.2'
 
@@ -16,9 +16,10 @@ bundler_args: "--without assets:development:production"
 before_script: bundle exec rake db:create db:schema:load
 
 script:
-- bundle exec bundle audit check --update
+#- bundle exec bundle audit check --update
 - bundle exec rake test
 - bundle exec rspec spec
+- "bundle exec bundle-audit update && bundle exec bundle-audit check"
 # - bundle exec rubocop # TODO: make codebase rubocop compliant
 
 notifications:

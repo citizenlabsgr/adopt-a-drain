@@ -1,4 +1,4 @@
-FROM ruby:2.5.3
+FROM ruby:2.5.5
 # container name is citizenlabs/adopt-a-drain
 # docker build -t citizenlabs/adopt-a-drain .
 MAINTAINER James Wilfong
