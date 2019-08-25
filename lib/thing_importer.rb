@@ -54,7 +54,7 @@ class ThingImporter
         system_use_code: json_thing['dr_subwatershed'],
         jurisdiction: json_thing['dr_jurisdiction'],
         dr_asset_id: json_thing['dr_asset_id'],
-        dr_discharge: json_thig['dr_discharge']
+        dr_discharge: json_thing['dr_discharge']
       }
 
       return norm
@@ -87,10 +87,10 @@ class ThingImporter
           system_use_code varchar,
           jurisdiction varchar,
           dr_asset_id varchar,
-          dr_discharge
+          dr_discharge varchar
         )
       SQL
-      conn.raw_connection.prepare(insert_statement_id, 'INSERT INTO temp_thing_import (name, lat, lng, system_use_code, jurisdiction, dr_asset_id,dr_discharge) VALUES($1, $2, $3, $4, $5, $6, $7)')
+      conn.raw_connection.prepare(insert_statement_id, 'INSERT INTO temp_thing_import (name, lat, lng, system_use_code, jurisdiction, dr_asset_id, dr_discharge) VALUES($1, $2, $3, $4, $5, $6, $7)')
 
       # data.world code
       url = URI(source_url)
@@ -112,6 +112,7 @@ class ThingImporter
 
       # patch up to work around error
       json_string = '{ "data": ' + json_string + '}'
+      
       # end data world code
 
       # move data.world data into app db
