@@ -41,9 +41,9 @@ public/assets
 # Ignore MacOS file changes
 *.DS_Store
 
-# Ignore rspec examples 
+# Ignore rspec examples
 /spec/examples.txt
 
 # Ignore jupyter checkpoints
-/.ipynb_checkpoints
-/__pycache__
+.ipynb_checkpoints/
+__pycache__/
