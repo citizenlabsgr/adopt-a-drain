@@ -1,25 +1,59 @@
 # Install Adopt-A-Drain
-* Docker-compose is the easiest way for a Developer to get Adopt-A-Drain up and running.
+* Cloud9 is a web IDE that enables a Developer to be productive immediately, without installations. The drawback is that all developers share one instance.
+* Docker is a simple way for a Developer to get Adopt-A-Drain up and running. The drawback is that it can take some time to do the initial download and install 
 * We use Heroku to run our production install of Adopt-A-Drain.
 
 ## Prerequisites
 
-### Developers
+### Development
 
+#### Cloud9 (Web IDE) Version 
+* Open a browser
+
+
+#### Docker Version
 * Install [Docker](https://www.docker.com/get-started) and [Docker-Compose](https://docs.docker.com/compose/install/) on your development box
 * A Developer needs a [data.world](https://data.world) account to get an API token
-* A Developer needs a  [github](https://github.com) account
+* A Developer needs a [github](https://github.com) account
 * A Developer needs a [google map api key](https://developers.google.com/maps/documentation/javascript/get-api-key). If you are a permanent Citizen Labs developer, talk to the team about sharing a key. The personal api key process will require a credit card to prove you're not a robot.
+
 
 ### Production
 * Adopt a Drain requires [Postgres](http://www.postgresql.org/) to be installed.
 * We also recommend using a ruby version manager such as [rbenv](https://github.com/rbenv/rbenv).
 * An Administrator needs a [data.world](https://data.world) account to get an API token
-* An Administrator needs a  [github](https://github.com) account
+* An Administrator needs a [github](https://github.com) account
 * An Administrator needs a [google map](https://cloud.google.com/maps-platform/) account
 
-## Installation
-### Developer
+<br/>
+
+## Installation and Setup
+
+### Cloud9 Version (Web IDE)
+To get you up and running quickly, without hours of downloads and setup, we use [Cloud9](http://tiny.cc/lgrow-cloud9), a web-based IDE, as a virtual workspace.
+
+#### Login
+1. Go to `http://tiny.cc/lgrow-cloud9`
+2. The account id is `citizenlabs`
+3. Ask someone in the room for the `username` and `password`
+
+#### Run the app
+1. At the bottom of the screen you should see a terminal window. The path should read: `cloud9:~/environment/adopt-a-drain (cloud9) $`
+2. Run `./server.sh`
+3. In the top middle of the screen, click **Preview** > **Preview Running Application**. This should open a small panel at the bottom. 
+4. Click the "Pop Out Into New Window" and Viola! You should have a running instance of Adopt-A-Drain.
+
+  *If you get the error "Your web browser does not have third-party cookies enabled", follow the instructions [here](https://stackoverflow.com/q/49356846)*
+
+#### Cloud9 Best Practices
+* Remember that someone else could have made changes since the last time you signed in
+* Check the branch and which files have changed with `git status`
+* Check for specific changes with `git diff`
+* Before committing, change the git config to use your email and name so we know who is submitting the changes! Please change them back when you're done
+
+<br/>
+
+### Docker Version
 #### Clone the Repo
 On your local machine, open a Terminal window
 ```
@@ -28,7 +62,6 @@ On your local machine, open a Terminal window
 ```
 
 #### Get a Google API key
-
 
 #### Add Development Environment Variables (.env)
 Put `.env` in the adopt-a-drain folder of the cloned repo
@@ -63,7 +96,7 @@ Put `.env` in the adopt-a-drain folder of the cloned repo
 
 
 
-#### Build Adopt a Drain with Compose
+#### Build with Docker Compose
 Build caches steps to make docker-compose run faster
 Open a Terminal Window
 Run the following if you change the Dockerfile, Docker-composer, GEMFILE or GEMLOCK.lock
@@ -77,7 +110,7 @@ Run the following if you change the Dockerfile, Docker-composer, GEMFILE or GEML
 
 ```
 
-#### Run Adopt a Drain with Compose
+#### Run with Docker Compose
 Open a Terminal Window
 ```    
                            # Open a command window
@@ -90,7 +123,6 @@ Open a Terminal Window
 #### Connect to Adopt-a-drain Application
 Make sure Adopt-a-drain is accepting connections.
 ```
-
 # Visit your website http://localhost:3000 (or the IP of your docker-machine)
 ```
 
@@ -102,6 +134,8 @@ Make sure Adopt-a-drain is accepting connections.
 * On success, Docker-compose makes the Adopt-a-drain ready to accept connections.
 
 At this point, a Developer should be good to start jamming on issues [here](https://github.com/citizenlabsgr/adopt-a-drain/issues).
+
+<br/>
 
 ## Testing
 * Start the Docker containers
@@ -117,7 +151,7 @@ At this point, a Developer should be good to start jamming on issues [here](http
 
 ```
 
-
+<br/>
 
 ## Production Deployment
 
@@ -173,7 +207,7 @@ variables:
 An example ID is `UA-12345678-9`, and an example domain is `adoptadrain.org`.
 
 
-
+<br/>
 
 ## Submitting a Pull Request
 1. [Fork the repository.][fork]
@@ -191,6 +225,8 @@ An example ID is `UA-12345678-9`, and an example domain is `adoptadrain.org`.
 [branch]: https://guides.github.com/introduction/flow/
 [pr]: http://help.github.com/send-pull-requests/
 
+<br/>
+
 ## Supported Ruby Version
 This library aims to support and is [tested against][travis] Ruby version 2.5.0
 and Postgres 9.6.
@@ -201,8 +237,4 @@ This library may inadvertently work (or seem to work) on other Ruby
 implementations, however support will only be provided for the version above.
 
 If you would like this library to support another Ruby version, you may
-volunteer to be a maintainer. Being a maintainer entails making sure all tests
-run and pass on that implementation. When something breaks on your
-implementation, you will be personally responsible for providing patches in a
-timely fashion. If critical issues for a particular implementation exist at the
-time of a major release, support for that Ruby version may be dropped.
+volunteer to be a maintainer. Being a maintainer entails making sure all tests run and pass on that implementation. When something breaks on your implementation, you will be personally responsible for providing patches in a timely fashion. If critical issues for a particular implementation exist at the time of a major release, support for that Ruby version may be dropped.
