@@ -318,7 +318,7 @@ DEPENDENCIES
   concurrent-ruby (>= 1.1.5)
   coveralls
   database_cleaner
-  devise (~> 4.4)
+  devise (~> 4.7)
   dotenv-rails
   execjs
   geokit-rails
