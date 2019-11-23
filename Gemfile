@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 ruby '2.5.5'
+gem 'minitest', '>=5.13.0'
 
 gem 'airbrake', '~> 7.1'
 gem 'bundler-audit', '~> 0.6'
