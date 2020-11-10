@@ -5,6 +5,11 @@ services:
     image: library/postgres:9.6
     ports:
       - "5432:5432"
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+
     volumes:
       - "~/.aad/pgdata:/var/lib/postgresql/data"
       # - "~/data_cl_aad/pgdata:/var/lib/postgresql/data"
@@ -37,5 +42,6 @@ services:
       - "3000:3000"
     depends_on:
       - db
+
 # Run the tests
 #   docker-compose run web bundle exec rake test
