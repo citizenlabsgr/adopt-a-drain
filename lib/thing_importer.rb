@@ -104,7 +104,8 @@ class ThingImporter
       request["authorization"] = "Bearer #{ENV['DW_AUTH_TOKEN']}"
 
       # get all the data
-      request.body = "{\"query\":\"select * from grb_drains\",\"includeTableSchema\":false}"
+      #request.body = "{\"query\":\"select * from grb_drains\",\"includeTableSchema\":false}"
+      request.body = "{\"query\":\"select * from lgrow_current\",\"includeTableSchema\":false}"
 
       response = http.request(request)
 
@@ -112,7 +113,7 @@ class ThingImporter
 
       # patch up to work around error
       json_string = '{ "data": ' + json_string + '}'
-      
+
       # end data world code
 
       # move data.world data into app db
