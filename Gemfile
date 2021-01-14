@@ -15,7 +15,7 @@ gem 'obscenity', '>= 1.0.2'
 gem 'pg', '~> 0.21'
 gem 'rails', '~> 4.2.11.1'
 gem 'rack', '~> 1.6.12'
-gem 'rails_admin', '~> 1.0'
+gem 'rails_admin', '~> 1.4'
 gem 'validates_formatting_of', '~> 0.9'
 
 gem 'paranoia', '~> 2.4'
