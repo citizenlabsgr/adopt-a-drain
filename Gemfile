@@ -25,7 +25,7 @@ gem 'byebug', groups: %i[development est]
 gem 'dotenv-rails'
 gem 'execjs'
 gem 'therubyracer'
-gem 'nokogiri', '~> 1.10.8'
+gem 'nokogiri', '~> 1.11.4'
 
 group :assets do
   gem 'sass-rails', '>= 4.0.3'
